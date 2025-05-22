@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accomodation | Tala Ridge</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  {% load static %}
+  <style>
+    html {
+      font-size: 14px; /* Reduced from default 16px for a more compact look */
+    }
+    @media (max-width: 640px) {
+      html { font-size: 13px; }
+    }
+    @media (max-width: 400px) {
+      html { font-size: 12px; }
+    }
+    .container, .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-3xl, .max-w-md, .max-w-xs {
+      max-width: 90vw !important;
+    }
+    /* Optionally, reduce padding/margins for compactness */
+    .px-4 { padding-left: 0.75rem !important; padding-right: 0.75rem !important; }
+    .py-10 { padding-top: 2rem !important; padding-bottom: 2rem !important; }
+    .py-12 { padding-top: 2.5rem !important; padding-bottom: 2.5rem !important; }
+    .py-16 { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+    .pt-20 { padding-top: 3.5rem !important; }
+    .pb-10 { padding-bottom: 2rem !important; }
+    .rounded-xl { border-radius: 0.75rem !important; }
+    /* You can further tweak as needed */
+  </style>
+</head>
+<body class="m-0 p-0 bg-[#f5eee6]">
+  <div class="relative min-h-screen w-full overflow-hidden pt-20">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 w-full z-20 flex items-center justify-between px-4 sm:px-8 md:px-16 lg:px-32 xl:px-48 py-4 bg-white/80 backdrop-blur-sm border-b border-white/20 transition-shadow">
+      <div class="flex items-center space-x-2">
+        <button id="menuBtn" class="flex items-center space-x-2 text-gray-800 font-semibold uppercase tracking-wider focus:outline-none">
+          <span>
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+              <line x1="4" y1="7" x2="20" y2="7" stroke="currentColor" stroke-linecap="round"/>
+              <line x1="4" y1="12" x2="20" y2="12" stroke="currentColor" stroke-linecap="round"/>
+              <line x1="4" y1="17" x2="20" y2="17" stroke="currentColor" stroke-linecap="round"/>
+            </svg>
+          </span>
+        </button>
+      </div>
+      <div class="flex flex-col items-center">
+        <img src="{% static 'Images/logo-4.png' %}" alt="Tala Ridge Logo" class="h-12 w-auto mb-1 select-none" style="object-fit:contain;">
+      </div>
+      <div>
+        <a href="{% url 'home' %}#contact-section" class="bg-yellow-900 text-white font-semibold px-3 sm:px-4 md:px-6 py-2 rounded shadow hover:bg-yellow-800 transition uppercase tracking-widest text-xs sm:text-sm">
+          Contact Us
+        </a>
+      </div>
+    </nav>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-40 z-30 transition-opacity duration-300 opacity-0 pointer-events-none"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 sm:w-72 bg-[#4b2413]/80 backdrop-blur-md z-40 transform -translate-x-full transition-transform duration-500 ease-in-out shadow-2xl flex flex-col">
+      <div class="flex items-center justify-between px-6 py-6 border-b border-white/10">
+        <span class="text-white text-xl sm:text-2xl font-extrabold tracking-widest">Menu</span>
+        <button id="closeSidebar" class="text-white text-2xl focus:outline-none">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <nav class="flex-1 px-6 py-8">
+        <ul class="space-y-6">
+          <li><a href="{% url 'home' %}" class="text-yellow-400 font-bold text-base sm:text-lg">Home</a></li>
+          <li><a href="{% url 'gardens' %}" class="text-white font-semibold text-base sm:text-lg hover:text-yellow-600 transition">The Gardens</a></li>
+          <li><a href="{% url 'accomodation' %}" class="text-white font-semibold text-base sm:text-lg hover:text-yellow-600 transition">Accomodation</a></li>
+          <li><a href="#" class="text-white font-semibold text-base sm:text-lg hover:text-yellow-600 transition">Restaurant</a></li>
+          <li><a href="#" class="text-white font-semibold text-base sm:text-lg hover:text-yellow-600 transition">Swimming Pool</a></li>
+          <li><a href="#" class="text-white font-semibold text-base sm:text-lg hover:text-yellow-600 transition">Bar & Lounge</a></li>
+          <li><a href="#" class="text-white font-semibold text-base sm:text-lg hover:text-yellow-600 transition">Conferencing</a></li>
+          <li><a href="{% url 'home' %}#contact-section" class="text-white font-semibold text-base sm:text-lg hover:text-yellow-600 transition">Contacts</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Hero Section -->
+    <section class="w-full pt-16 pb-10 bg-gradient-to-b from-white/80 to-[#f5eee6]">
+      <div class="max-w-5xl mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-yellow-900 mb-4 animate-fade-in-down">Our Rooms & Suites</h1>
+        <p class="text-lg md:text-xl text-gray-700 mb-8 animate-fade-in-up">
+          Experience comfort, elegance, and tranquility in every room. Whether you're seeking a romantic getaway, a family retreat, or a business stay, Tala Ridge offers the perfect space for you.
+        </p>
+      </div>
+    </section>
+
+    <!-- Rooms Cards Section -->
+    <section class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Room 1 -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition group animate-slide-in-up">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80" alt="Deluxe Room" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
+          <span class="absolute top-4 left-4 bg-yellow-900 text-white px-3 py-1 rounded-full text-xs font-bold shadow">Deluxe</span>
+        </div>
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-yellow-900 mb-2">Deluxe Room</h3>
+          <p class="text-gray-700 mb-4">
+            Spacious comfort with a king bed, private balcony, and stunning garden views. Perfect for couples or solo travelers.
+          </p>
+          <div class="flex items-center space-x-2 text-yellow-900 mb-2">
+            <i class="fa fa-bed"></i>
+            <span>1 King Bed</span>
+          </div>
+          <div class="flex items-center space-x-2 text-yellow-900 mb-4">
+            <i class="fa fa-wifi"></i>
+            <span>Free Wi-Fi</span>
+          </div>
+          <button class="w-full bg-yellow-900 text-white font-bold py-2 rounded-lg transition hover:bg-yellow-800 animate-pulse">Book Now</button>
+        </div>
+      </div>
+      <!-- Room 2 -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition group animate-slide-in-up delay-100">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?w=600&auto=format&fit=crop&q=80" alt="Family Suite" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
+          <span class="absolute top-4 left-4 bg-yellow-900 text-white px-3 py-1 rounded-full text-xs font-bold shadow">Family</span>
+        </div>
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-yellow-900 mb-2">Family Suite</h3>
+          <p class="text-gray-700 mb-4">
+            Enjoy extra space with two bedrooms, a lounge, and a private terrace. Ideal for families or groups.
+          </p>
+          <div class="flex items-center space-x-2 text-yellow-900 mb-2">
+            <i class="fa fa-users"></i>
+            <span>2 Bedrooms</span>
+          </div>
+          <div class="flex items-center space-x-2 text-yellow-900 mb-4">
+            <i class="fa fa-tv"></i>
+            <span>Smart TV</span>
+          </div>
+          <button class="w-full bg-yellow-900 text-white font-bold py-2 rounded-lg transition hover:bg-yellow-800 animate-pulse">Book Now</button>
+        </div>
+      </div>
+      <!-- Room 3 -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition group animate-slide-in-up delay-200">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1509228468518-c5eeecbff44a?w=600&auto=format&fit=crop&q=80" alt="Executive Suite" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
+          <span class="absolute top-4 left-4 bg-yellow-900 text-white px-3 py-1 rounded-full text-xs font-bold shadow">Executive</span>
+        </div>
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-yellow-900 mb-2">Executive Suite</h3>
+          <p class="text-gray-700 mb-4">
+            Luxury and privacy with a spacious living area, work desk, and premium amenities for business or leisure.
+          </p>
+          <div class="flex items-center space-x-2 text-yellow-900 mb-2">
+            <i class="fa fa-briefcase"></i>
+            <span>Workspace</span>
+          </div>
+          <div class="flex items-center space-x-2 text-yellow-900 mb-4">
+            <i class="fa fa-bath"></i>
+            <span>Luxury Bath</span>
+          </div>
+          <button class="w-full bg-yellow-900 text-white font-bold py-2 rounded-lg transition hover:bg-yellow-800 animate-pulse">Book Now</button>
+        </div>
+      </div>
+    </section>
+
+        <section class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Room 1 -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition group animate-slide-in-up">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80" alt="Deluxe Room" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
+          <span class="absolute top-4 left-4 bg-yellow-900 text-white px-3 py-1 rounded-full text-xs font-bold shadow">Deluxe</span>
+        </div>
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-yellow-900 mb-2">Deluxe Room</h3>
+          <p class="text-gray-700 mb-4">
+            Spacious comfort with a king bed, private balcony, and stunning garden views. Perfect for couples or solo travelers.
+          </p>
+          <div class="flex items-center space-x-2 text-yellow-900 mb-2">
+            <i class="fa fa-bed"></i>
+            <span>1 King Bed</span>
+          </div>
+          <div class="flex items-center space-x-2 text-yellow-900 mb-4">
+            <i class="fa fa-wifi"></i>
+            <span>Free Wi-Fi</span>
+          </div>
+          <button class="w-full bg-yellow-900 text-white font-bold py-2 rounded-lg transition hover:bg-yellow-800 animate-pulse">Book Now</button>
+        </div>
+      </div>
+      <!-- Room 2 -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition group animate-slide-in-up delay-100">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?w=600&auto=format&fit=crop&q=80" alt="Family Suite" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
+          <span class="absolute top-4 left-4 bg-yellow-900 text-white px-3 py-1 rounded-full text-xs font-bold shadow">Family</span>
+        </div>
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-yellow-900 mb-2">Family Suite</h3>
+          <p class="text-gray-700 mb-4">
+            Enjoy extra space with two bedrooms, a lounge, and a private terrace. Ideal for families or groups.
+          </p>
+          <div class="flex items-center space-x-2 text-yellow-900 mb-2">
+            <i class="fa fa-users"></i>
+            <span>2 Bedrooms</span>
+          </div>
+          <div class="flex items-center space-x-2 text-yellow-900 mb-4">
+            <i class="fa fa-tv"></i>
+            <span>Smart TV</span>
+          </div>
+          <button class="w-full bg-yellow-900 text-white font-bold py-2 rounded-lg transition hover:bg-yellow-800 animate-pulse">Book Now</button>
+        </div>
+      </div>
+      <!-- Room 3 -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition group animate-slide-in-up delay-200">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1509228468518-c5eeecbff44a?w=600&auto=format&fit=crop&q=80" alt="Executive Suite" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
+          <span class="absolute top-4 left-4 bg-yellow-900 text-white px-3 py-1 rounded-full text-xs font-bold shadow">Executive</span>
+        </div>
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-yellow-900 mb-2">Executive Suite</h3>
+          <p class="text-gray-700 mb-4">
+            Luxury and privacy with a spacious living area, work desk, and premium amenities for business or leisure.
+          </p>
+          <div class="flex items-center space-x-2 text-yellow-900 mb-2">
+            <i class="fa fa-briefcase"></i>
+            <span>Workspace</span>
+          </div>
+          <div class="flex items-center space-x-2 text-yellow-900 mb-4">
+            <i class="fa fa-bath"></i>
+            <span>Luxury Bath</span>
+          </div>
+          <button class="w-full bg-yellow-900 text-white font-bold py-2 rounded-lg transition hover:bg-yellow-800 animate-pulse">Book Now</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking Modal (hidden by default) -->
+    <div id="bookingModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 transition-opacity duration-300 opacity-0 pointer-events-none">
+      <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-12 w-full max-w-lg relative animate-fade-in-up">
+        <button id="closeModal" class="absolute top-4 right-4 text-gray-500 hover:text-yellow-900 text-2xl focus:outline-none">
+          <i class="fas fa-times"></i>
+        </button>
+        <h2 class="text-2xl sm:text-3xl font-bold text-yellow-900 mb-4 text-center">Book Your Stay</h2>
+        <p class="text-gray-700 mb-6 text-center max-w-xl">
+          Fill in your details and our team will get back to you as soon as possible.
+        </p>
+        <form class="w-full max-w-lg space-y-4">
+          <div class="flex flex-col sm:flex-row gap-4">
+            <input type="text" name="name" placeholder="Your Name" required
+              class="flex-1 px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-yellow-400 focus:outline-none bg-white/80 text-gray-800 text-sm transition" />
+            <input type="email" name="email" placeholder="Your Email" required
+              class="flex-1 px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-yellow-400 focus:outline-none bg-white/80 text-gray-800 text-sm transition" />
+          </div>
+          <input type="text" name="room_type" id="roomTypeInput" placeholder="Room Type" required
+            class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-yellow-400 focus:outline-none bg-white/80 text-gray-800 text-sm transition" />
+          <textarea name="message" rows="3" placeholder="Additional Requests (optional)"
+            class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-yellow-400 focus:outline-none bg-white/80 text-gray-800 text-sm transition"></textarea>
+          <button type="submit"
+            class="w-full bg-yellow-900 hover:bg-yellow-800 text-white font-bold py-3 rounded-lg transition text-sm uppercase tracking-widest shadow">
+            Send Booking Request
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <section class="w-full py-12 bg-yellow-900 flex flex-col items-center justify-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 text-center">Ready to Relax?</h2>
+      <p class="text-white mb-6 text-center max-w-2xl">
+        Book your stay at Tala Ridge and enjoy the perfect blend of comfort, style, and nature. Contact us for special offers or group bookings!
+      </p>
+      <a href="{% url 'home' %}#contact-section" class="bg-white text-yellow-900 font-bold px-8 py-3 rounded-lg shadow hover:bg-yellow-100 transition text-lg uppercase tracking-widest">
+        Contact Us
+      </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="w-full bg-yellow-900 backdrop-blur-sm text-white py-8 mt-0">
+      <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center space-x-3">
+          <span class="inline-flex items-center justify-center bg-white rounded-lg p-1" style="height: 44px;">
+            <img src="{% static 'Images/logo-4.png' %}" alt="Tala Ridge Logo" class="h-10 w-auto" style="object-fit:contain;">
+          </span>
+          <span class="font-bold text-lg tracking-widest">TALA RIDGE</span>
+        </div>
+        <div class="text-center md:text-right text-sm">
+          &copy; {{ year|default:"2025" }} Tala Ridge Country Resort. All rights reserved.
+        </div>
+        <div class="flex space-x-4">
+          <a href="https://facebook.com" target="_blank" class="hover:text-yellow-400"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://instagram.com" target="_blank" class="hover:text-yellow-400"><i class="fab fa-instagram"></i></a>
+          <a href="https://twitter.com" target="_blank" class="hover:text-yellow-400"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Animations -->
+  <style>
+    @keyframes fade-in-down {
+      0% { opacity: 0; transform: translateY(-30px);}
+      100% { opacity: 1; transform: translateY(0);}
+    }
+    .animate-fade-in-down {
+      animation: fade-in-down 1s cubic-bezier(0.4, 0, 0.2, 1) both;
+    }
+    @keyframes fade-in-up {
+      0% { opacity: 0; transform: translateY(30px);}
+      100% { opacity: 1; transform: translateY(0);}
+    }
+    .animate-fade-in-up {
+      animation: fade-in-up 1s 0.2s cubic-bezier(0.4, 0, 0.2, 1) both;
+    }
+    @keyframes slide-in-up {
+      0% { opacity: 0; transform: translateY(60px);}
+      100% { opacity: 1; transform: translateY(0);}
+    }
+    .animate-slide-in-up {
+      animation: slide-in-up 1s cubic-bezier(0.4, 0, 0.2, 1) both;
+    }
+    .animate-slide-in-up.delay-100 { animation-delay: 0.15s; }
+    .animate-slide-in-up.delay-200 { animation-delay: 0.3s; }
+  </style>
+
+  <!-- Sidebar Script -->
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    const closeSidebar = document.getElementById('closeSidebar');
+
+    menuBtn.addEventListener('click', () => {
+      sidebar.classList.remove('-translate-x-full');
+      sidebar.classList.add('translate-x-0');
+      sidebarOverlay.classList.remove('opacity-0', 'pointer-events-none');
+      sidebarOverlay.classList.add('opacity-100');
+    });
+
+    closeSidebar.addEventListener('click', () => {
+      sidebar.classList.remove('translate-x-0');
+      sidebar.classList.add('-translate-x-full');
+      sidebarOverlay.classList.remove('opacity-100');
+      sidebarOverlay.classList.add('opacity-0', 'pointer-events-none');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('translate-x-0');
+      sidebar.classList.add('-translate-x-full');
+      sidebarOverlay.classList.remove('opacity-100');
+      sidebarOverlay.classList.add('opacity-0', 'pointer-events-none');
+    });
+
+    // Modal logic
+    const bookingModal = document.getElementById('bookingModal');
+    const closeModal = document.getElementById('closeModal');
+    const bookNowBtns = document.querySelectorAll('button.bg-yellow-900');
+    const roomTypeInput = document.getElementById('roomTypeInput');
+
+    // Open modal on Book Now click
+    bookNowBtns.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        if (btn.textContent.trim() === "Book Now") {
+          e.preventDefault();
+          bookingModal.classList.remove('opacity-0', 'pointer-events-none');
+          bookingModal.classList.add('opacity-100');
+          // Set room type if available
+          const card = btn.closest('.group');
+          if (card) {
+            const roomTitle = card.querySelector('h3');
+            if (roomTitle && roomTypeInput) {
+              roomTypeInput.value = roomTitle.textContent.trim();
+            }
+          }
+        }
+      });
+    });
+
+    // Close modal
+    closeModal.addEventListener('click', () => {
+      bookingModal.classList.remove('opacity-100');
+      bookingModal.classList.add('opacity-0', 'pointer-events-none');
+    });
+
+    // Close modal when clicking outside the form
+    bookingModal.addEventListener('click', (e) => {
+      if (e.target === bookingModal) {
+        bookingModal.classList.remove('opacity-100');
+        bookingModal.classList.add('opacity-0', 'pointer-events-none');
+      }
+    });
+  </script>
+
+  <!-- Custom Cursor -->
+  <div id="custom-cursor" style="position:fixed;top:0;left:0;width:40px;height:40px;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);border-radius:50%;background:rgba(255,193,7,0.15);border:2px solid #b45309;transition:background 0.2s,border 0.2s;mix-blend-mode: multiply;"></div>
+
+  <script>
+    // Trailing custom cursor logic (keeps default pointer)
+    const cursor = document.getElementById('custom-cursor');
+    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+    let cursorX = mouseX, cursorY = mouseY;
+
+    document.addEventListener('mousemove', e => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    function animateCursor() {
+      // Move the custom cursor a fraction closer to the real cursor each frame
+      cursorX += (mouseX - cursorX) * 0.18;
+      cursorY += (mouseY - cursorY) * 0.18;
+      cursor.style.top = cursorY + 'px';
+      cursor.style.left = cursorX + 'px';
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    // Cursor grows on interactive elements
+    const growCursor = () => cursor.style.transform = 'translate(-50%,-50%) scale(1.5)';
+    const shrinkCursor = () => cursor.style.transform = 'translate(-50%,-50%) scale(1)';
+    document.querySelectorAll('a, button, input, textarea, select, label').forEach(el => {
+      el.addEventListener('mouseenter', growCursor);
+      el.addEventListener('mouseleave', shrinkCursor);
+    });
+
+    // Keep the default system cursor visible
+    document.body.style.cursor = 'auto';
+  </script>
+</body>
+</html>
