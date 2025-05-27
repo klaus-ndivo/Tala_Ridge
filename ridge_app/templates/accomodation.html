@@ -72,9 +72,9 @@
           <li><a href="{% url 'home' %}" class="text-yellow-400 font-bold text-base sm:text-lg">Home</a></li>
           <li><a href="{% url 'gardens' %}" class="text-white font-semibold text-base sm:text-lg hover:text-yellow-600 transition">The Gardens</a></li>
           <li><a href="{% url 'accomodation' %}" class="text-white font-semibold text-base sm:text-lg hover:text-yellow-600 transition">Accomodation</a></li>
-          <li><a href="#" class="text-white font-semibold text-base sm:text-lg hover:text-yellow-600 transition">Restaurant</a></li>
-          <li><a href="#" class="text-white font-semibold text-base sm:text-lg hover:text-yellow-600 transition">Swimming Pool</a></li>
-          <li><a href="#" class="text-white font-semibold text-base sm:text-lg hover:text-yellow-600 transition">Bar & Lounge</a></li>
+          <li><a href="{% url 'restaurant' %}" class="text-white font-semibold text-base sm:text-lg hover:text-yellow-600 transition">Restaurant</a></li>
+          <li><a href="{% url 'swimming' %}" class="text-white font-semibold text-base sm:text-lg hover:text-yellow-600 transition">Swimming Pool</a></li>
+          <li><a href="{% url 'bar' %}" class="text-white font-semibold text-base sm:text-lg hover:text-yellow-600 transition">Bar & Lounge</a></li>
           <li><a href="#" class="text-white font-semibold text-base sm:text-lg hover:text-yellow-600 transition">Conferencing</a></li>
           <li><a href="{% url 'home' %}#contact-section" class="text-white font-semibold text-base sm:text-lg hover:text-yellow-600 transition">Contacts</a></li>
         </ul>
@@ -230,6 +230,78 @@
       </div>
     </section>
 
+    <!-- Amenities Section -->
+    <section class="max-w-7xl mx-auto px-4 py-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-yellow-900 mb-8 text-center animate-fade-in-down">Amenities & Perks</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 justify-items-center">
+        <div class="flex flex-col items-center animate-bounce delay-100">
+          <span class="bg-yellow-100 text-yellow-900 rounded-full p-4 mb-2 shadow-lg text-2xl"><i class="fa fa-wifi"></i></span>
+          <span class="text-sm font-semibold text-yellow-900">Free Wi-Fi</span>
+        </div>
+        <div class="flex flex-col items-center animate-bounce delay-200">
+          <span class="bg-yellow-100 text-yellow-900 rounded-full p-4 mb-2 shadow-lg text-2xl"><i class="fa fa-swimmer"></i></span>
+          <span class="text-sm font-semibold text-yellow-900">Swimming Pool</span>
+        </div>
+        <div class="flex flex-col items-center animate-bounce delay-300">
+          <span class="bg-yellow-100 text-yellow-900 rounded-full p-4 mb-2 shadow-lg text-2xl"><i class="fa fa-utensils"></i></span>
+          <span class="text-sm font-semibold text-yellow-900">Restaurant</span>
+        </div>
+        <div class="flex flex-col items-center animate-bounce delay-400">
+          <span class="bg-yellow-100 text-yellow-900 rounded-full p-4 mb-2 shadow-lg text-2xl"><i class="fa fa-spa"></i></span>
+          <span class="text-sm font-semibold text-yellow-900">Spa & Wellness</span>
+        </div>
+        <div class="flex flex-col items-center animate-bounce delay-500">
+          <span class="bg-yellow-100 text-yellow-900 rounded-full p-4 mb-2 shadow-lg text-2xl"><i class="fa fa-car"></i></span>
+          <span class="text-sm font-semibold text-yellow-900">Free Parking</span>
+        </div>
+        <div class="flex flex-col items-center animate-bounce delay-600">
+          <span class="bg-yellow-100 text-yellow-900 rounded-full p-4 mb-2 shadow-lg text-2xl"><i class="fa fa-mug-hot"></i></span>
+          <span class="text-sm font-semibold text-yellow-900">Room Service</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Animated Testimonials Section -->
+    <section class="max-w-5xl mx-auto px-4 py-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-yellow-900 mb-8 text-center animate-fade-in-down">What Our Guests Say</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl transition animate-slide-in-up">
+          <i class="fa fa-quote-left text-yellow-900 text-3xl mb-3 animate-pulse"></i>
+          <p class="text-gray-700 mb-4 italic">"Absolutely stunning rooms and the staff were so welcoming. We’ll be back!"</p>
+          <span class="font-bold text-yellow-900">— Alice N.</span>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl transition animate-slide-in-up delay-100">
+          <i class="fa fa-quote-left text-yellow-900 text-3xl mb-3 animate-pulse"></i>
+          <p class="text-gray-700 mb-4 italic">"The family suite was perfect for us. Kids loved the pool and gardens."</p>
+          <span class="font-bold text-yellow-900">— The Kimanis</span>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl transition animate-slide-in-up delay-200">
+          <i class="fa fa-quote-left text-yellow-900 text-3xl mb-3 animate-pulse"></i>
+          <p class="text-gray-700 mb-4 italic">"Best sleep I’ve had in ages. The executive suite is worth every penny."</p>
+          <span class="font-bold text-yellow-900">— Samuel K.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Animated FAQ Section -->
+    <section class="max-w-3xl mx-auto px-4 py-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-yellow-900 mb-8 text-center animate-fade-in-down">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div class="bg-white rounded-lg shadow p-5 animate-fade-in-up">
+          <h3 class="font-semibold text-yellow-900 mb-2">Is breakfast included?</h3>
+          <p class="text-gray-700 text-sm">Yes, all room bookings include a complimentary breakfast buffet.</p>
+        </div>
+        <div class="bg-white rounded-lg shadow p-5 animate-fade-in-up delay-100">
+          <h3 class="font-semibold text-yellow-900 mb-2">Can I request a late checkout?</h3>
+          <p class="text-gray-700 text-sm">Late checkout is available upon request, subject to availability.</p>
+        </div>
+        <div class="bg-white rounded-lg shadow p-5 animate-fade-in-up delay-200">
+          <h3 class="font-semibold text-yellow-900 mb-2">Are pets allowed?</h3>
+          <p class="text-gray-700 text-sm">We welcome small pets in select rooms. Please contact us before booking.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- Booking Modal (hidden by default) -->
     <div id="bookingModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 transition-opacity duration-300 opacity-0 pointer-events-none">
       <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-12 w-full max-w-lg relative animate-fade-in-up">
@@ -316,6 +388,17 @@
     }
     .animate-slide-in-up.delay-100 { animation-delay: 0.15s; }
     .animate-slide-in-up.delay-200 { animation-delay: 0.3s; }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0);}
+      50% { transform: translateY(-10px);}
+    }
+    .animate-bounce { animation: bounce 1.2s infinite; }
+    .delay-100 { animation-delay: 0.1s !important; }
+    .delay-200 { animation-delay: 0.2s !important; }
+    .delay-300 { animation-delay: 0.3s !important; }
+    .delay-400 { animation-delay: 0.4s !important; }
+    .delay-500 { animation-delay: 0.5s !important; }
+    .delay-600 { animation-delay: 0.6s !important; }
   </style>
 
   <!-- Sidebar Script -->

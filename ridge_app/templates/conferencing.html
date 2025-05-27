@@ -3,12 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Full Page Background</title>
+  <title>Conferencing | Tala Ridge</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   {% load static %}
+  <style>
+    @keyframes fade-in-down {
+      0% { opacity: 0; transform: translateY(-40px);}
+      100% { opacity: 1; transform: translateY(0);}
+    }
+    .animate-fade-in-down { animation: fade-in-down 1s both; }
+    @keyframes fade-in-up {
+      0% { opacity: 0; transform: translateY(40px);}
+      100% { opacity: 1; transform: translateY(0);}
+    }
+    .animate-fade-in-up { animation: fade-in-up 1s both; }
+    @keyframes slide-in-left {
+      0% { opacity: 0; transform: translateX(-60px);}
+      100% { opacity: 1; transform: translateX(0);}
+    }
+    .animate-slide-in-left { animation: slide-in-left 1s both; }
+    @keyframes slide-in-right {
+      0% { opacity: 0; transform: translateX(60px);}
+      100% { opacity: 1; transform: translateX(0);}
+    }
+    .animate-slide-in-right { animation: slide-in-right 1s both; }
+    @keyframes pulse-bg {
+      0%, 100% { background-color: #fffbe7;}
+      50% { background-color: #fff3cd;}
+    }
+    .animate-pulse-bg { animation: pulse-bg 2s infinite; }
+    .delay-100 { animation-delay: 0.1s !important; }
+    .delay-200 { animation-delay: 0.2s !important; }
+    .delay-300 { animation-delay: 0.3s !important; }
+    .delay-400 { animation-delay: 0.4s !important; }
+    .delay-500 { animation-delay: 0.5s !important; }
+  </style>
 </head>
-<body class="m-0 p-0">
+<body class="m-0 p-0 bg-gradient-to-br from-white via-yellow-50 to-yellow-100">
   <div class="relative min-h-screen w-full overflow-hidden pt-20">
     <!-- Navbar -->
     <nav class="fixed top-0 left-0 w-full z-20 flex items-center justify-between px-4 sm:px-8 md:px-16 lg:px-32 xl:px-48 py-4 bg-white/60 backdrop-blur-sm border-b border-white/20 transition-shadow">
@@ -21,14 +53,197 @@
               <line x1="4" y1="17" x2="20" y2="17" stroke="currentColor" stroke-linecap="round"/>
             </svg>
           </span>
-          <span class="ml-1 hidden sm:inline"></span>
         </button>
       </div>
       <div class="flex flex-col items-center">
-          <img src="{% static 'Images/logo-4.png' %}" alt="Tala Ridge Logo" class="h-12 w-auto mb-1 select-none" style="object-fit:contain;">      </div>
+        <img src="{% static 'Images/logo-4.png' %}" alt="Tala Ridge Logo" class="h-12 w-auto mb-1 select-none" style="object-fit:contain;">
+      </div>
       <div>
         <a href="#" class="bg-yellow-900 text-white font-semibold px-3 sm:px-4 md:px-6 py-2 rounded shadow hover:bg-yellow-800 transition uppercase tracking-widest text-xs sm:text-sm">
           Contact Us
         </a>
       </div>
     </nav>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-40 z-30 transition-opacity duration-300 opacity-0 pointer-events-none"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 sm:w-72 bg-white/95 backdrop-blur-md z-40 transform -translate-x-full transition-transform duration-500 ease-in-out shadow-2xl flex flex-col border-r border-yellow-900/10">
+      <div class="flex items-center justify-between px-6 py-6 border-b border-yellow-900/10">
+        <span class="text-yellow-900 text-xl sm:text-2xl font-extrabold tracking-widest">Menu</span>
+        <button id="closeSidebar" class="text-yellow-900 text-2xl focus:outline-none">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <nav class="flex-1 px-6 py-8">
+        <ul class="space-y-6">
+          <li><a href="{% url 'home' %}" class="text-black font-bold text-base sm:text-lg">Home</a></li>
+          <li><a href="{% url 'gardens' %}" class="text-black font-semibold text-base sm:text-lg hover:text-yellow-900 transition">The Gardens</a></li>
+          <li><a href="{% url 'accomodation' %}" class="text-black font-semibold text-base sm:text-lg hover:text-yellow-900 transition">Accomodation</a></li>
+          <li><a href="{% url 'restaurant' %}" class="text-black font-semibold text-base sm:text-lg hover:text-yellow-900 transition">Restaurant</a></li>
+          <li><a href="{% url 'swimming' %}" class="text-black font-semibold text-base sm:text-lg hover:text-yellow-900 transition">Swimming Pool</a></li>
+          <li><a href="{% url 'bar' %}" class="text-black font-semibold text-base sm:text-lg hover:text-yellow-900 transition">Bar & Lounge</a></li>
+          <li><a href="{% url 'conferencing' %}" class="text-yellow-900 font-semibold text-base sm:text-lg hover:text-yellow-900 transition">Conferencing</a></li>
+          <li><a href="{% url 'home' %}#contact-section" class="text-black font-semibold text-base sm:text-lg hover:text-yellow-900 transition">Contacts</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Hero Section -->
+    <section class="w-full pt-28 pb-12 bg-gradient-to-b from-white via-yellow-50 to-yellow-100 animate-fade-in-down">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-yellow-900 mb-4 animate-fade-in-down">Conferencing & Events</h1>
+        <p class="text-lg md:text-xl text-gray-700 mb-8 animate-fade-in-up delay-100">
+          Elevate your meetings and events at Tala Ridge. Modern spaces, seamless technology, and inspiring views for every occasion.
+        </p>
+        <div class="flex justify-center gap-4 mt-6">
+          <a href="#" class="bg-yellow-900 text-white px-6 py-2 rounded shadow hover:bg-yellow-800 transition font-bold uppercase tracking-widest animate-fade-in-up delay-200">Book Now</a>
+          <a href="#" class="bg-white border border-yellow-900 text-yellow-900 px-6 py-2 rounded shadow hover:bg-yellow-100 transition font-bold uppercase tracking-widest animate-fade-in-up delay-300">Download Brochure</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Animated Features Section -->
+    <section class="max-w-7xl mx-auto px-4 py-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-yellow-900 mb-10 text-center animate-fade-in-down">Why Choose Tala Ridge?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center animate-slide-in-left animate-pulse-bg">
+          <span class="bg-yellow-100 text-yellow-900 rounded-full p-4 mb-3 shadow-lg text-3xl animate-bounce"><i class="fa fa-tv"></i></span>
+          <h3 class="text-xl font-bold text-yellow-900 mb-2">Smart AV & WiFi</h3>
+          <p class="text-gray-700 text-center">State-of-the-art screens, sound, and high-speed internet for seamless presentations.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center animate-fade-in-up delay-100">
+          <span class="bg-yellow-100 text-yellow-900 rounded-full p-4 mb-3 shadow-lg text-3xl animate-bounce"><i class="fa fa-users"></i></span>
+          <h3 class="text-xl font-bold text-yellow-900 mb-2">Flexible Spaces</h3>
+          <p class="text-gray-700 text-center">Boardrooms, banquet halls, and breakout rooms for groups of any size.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center animate-fade-in-up delay-200">
+          <span class="bg-yellow-100 text-yellow-900 rounded-full p-4 mb-3 shadow-lg text-3xl animate-bounce"><i class="fa fa-utensils"></i></span>
+          <h3 class="text-xl font-bold text-yellow-900 mb-2">Custom Catering</h3>
+          <p class="text-gray-700 text-center">Tailored menus, coffee breaks, and themed banquets to suit your event.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center animate-slide-in-right delay-300">
+          <span class="bg-yellow-100 text-yellow-900 rounded-full p-4 mb-3 shadow-lg text-3xl animate-bounce"><i class="fa fa-mountain-sun"></i></span>
+          <h3 class="text-xl font-bold text-yellow-900 mb-2">Scenic Views</h3>
+          <p class="text-gray-700 text-center">Inspiring natural backdrops and outdoor breakout areas for creative thinking.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Animated Gallery Section -->
+    <section class="max-w-6xl mx-auto px-4 py-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-yellow-900 mb-10 text-center animate-fade-in-down">Gallery</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="overflow-hidden rounded-xl shadow-lg animate-fade-in-up">
+          <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=1200&q=90&auto=format&fit=crop" alt="Conference Room" class="w-full h-56 object-cover scale-100 hover:scale-110 transition-transform duration-700" />
+        </div>
+        <div class="overflow-hidden rounded-xl shadow-lg animate-fade-in-up delay-100">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200&q=90&auto=format&fit=crop" alt="Event Space" class="w-full h-56 object-cover scale-100 hover:scale-110 transition-transform duration-700" />
+        </div>
+        <div class="overflow-hidden rounded-xl shadow-lg animate-fade-in-up delay-200">
+          <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?w=1200&q=90&auto=format&fit=crop" alt="Outdoor Meeting" class="w-full h-56 object-cover scale-100 hover:scale-110 transition-transform duration-700" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Animated Steps Section -->
+    <section class="max-w-4xl mx-auto px-4 py-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-yellow-900 mb-10 text-center animate-fade-in-down">How to Book</h2>
+      <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+        <div class="flex flex-col items-center animate-slide-in-left">
+          <span class="bg-yellow-900 text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl font-bold mb-2 shadow-lg">1</span>
+          <h3 class="text-lg font-bold text-yellow-900 mb-1">Choose Your Space</h3>
+          <p class="text-gray-700 text-center">Select the perfect room or outdoor venue for your event.</p>
+        </div>
+        <div class="flex flex-col items-center animate-fade-in-up delay-100">
+          <span class="bg-yellow-900 text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl font-bold mb-2 shadow-lg">2</span>
+          <h3 class="text-lg font-bold text-yellow-900 mb-1">Customize Details</h3>
+          <p class="text-gray-700 text-center">Pick your layout, catering, and tech needs.</p>
+        </div>
+        <div class="flex flex-col items-center animate-slide-in-right delay-200">
+          <span class="bg-yellow-900 text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl font-bold mb-2 shadow-lg">3</span>
+          <h3 class="text-lg font-bold text-yellow-900 mb-1">Confirm & Enjoy</h3>
+          <p class="text-gray-700 text-center">Book online or call us. We’ll handle the rest!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Animated FAQ Section -->
+    <section class="max-w-3xl mx-auto px-4 py-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-yellow-900 mb-10 text-center animate-fade-in-down">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div class="bg-white rounded-lg shadow p-5 animate-fade-in-up">
+          <h3 class="font-semibold text-yellow-900 mb-2">What is the capacity?</h3>
+          <p class="text-gray-700 text-sm">Our largest hall seats up to 200, with smaller rooms for 10–50 guests.</p>
+        </div>
+        <div class="bg-white rounded-lg shadow p-5 animate-fade-in-up delay-100">
+          <h3 class="font-semibold text-yellow-900 mb-2">Can I get hybrid/virtual conferencing?</h3>
+          <p class="text-gray-700 text-sm">Yes, we offer video conferencing and streaming for remote attendees.</p>
+        </div>
+        <div class="bg-white rounded-lg shadow p-5 animate-fade-in-up delay-200">
+          <h3 class="font-semibold text-yellow-900 mb-2">Is on-site support available?</h3>
+          <p class="text-gray-700 text-sm">Our events team is on hand for setup, tech, and guest needs.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Animated Call to Action -->
+    <section class="w-full py-12 bg-yellow-900 animate-fade-in-up">
+      <div class="max-w-3xl mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 animate-fade-in-down">Ready to Plan Your Event?</h2>
+        <p class="text-lg text-yellow-100 mb-6 animate-fade-in-up">Contact us today for a custom quote and let’s make your next meeting unforgettable.</p>
+        <a href="#" class="inline-block bg-white text-yellow-900 font-bold px-8 py-3 rounded shadow hover:bg-yellow-100 transition uppercase tracking-widest animate-fade-in-up delay-100">Get Started</a>
+      </div>
+    </section>
+
+      <!-- Footer -->
+    <footer class="w-full bg-yellow-900 backdrop-blur-sm text-white py-8 mt-0">
+      <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center space-x-3">
+          <span class="inline-flex items-center justify-center bg-white rounded-lg p-1" style="height: 44px;">
+            <img src="{% static 'Images/logo-4.png' %}" alt="Tala Ridge Logo" class="h-10 w-auto" style="object-fit:contain;">
+          </span>
+          <span class="font-bold text-lg tracking-widest">TALA RIDGE</span>
+        </div>
+        <div class="text-center md:text-right text-sm">
+          &copy; {{ year|default:"2025" }} Tala Ridge Country Resort. All rights reserved.
+        </div>
+        <div class="flex space-x-4">
+          <a href="https://facebook.com" target="_blank" class="hover:text-yellow-400"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://instagram.com" target="_blank" class="hover:text-yellow-400"><i class="fab fa-instagram"></i></a>
+          <a href="https://twitter.com" target="_blank" class="hover:text-yellow-400"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+  </div>
+  <script>
+  // Sidebar open/close logic
+  const menuBtn = document.getElementById('menuBtn');
+  const sidebar = document.getElementById('sidebar');
+  const sidebarOverlay = document.getElementById('sidebarOverlay');
+  const closeSidebar = document.getElementById('closeSidebar');
+
+  if (menuBtn && sidebar && sidebarOverlay && closeSidebar) {
+    menuBtn.addEventListener('click', () => {
+      sidebar.classList.remove('-translate-x-full');
+      sidebarOverlay.classList.remove('opacity-0', 'pointer-events-none');
+      sidebarOverlay.classList.add('opacity-100');
+    });
+
+    closeSidebar.addEventListener('click', () => {
+      sidebar.classList.add('-translate-x-full');
+      sidebarOverlay.classList.add('opacity-0', 'pointer-events-none');
+      sidebarOverlay.classList.remove('opacity-100');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.add('-translate-x-full');
+      sidebarOverlay.classList.add('opacity-0', 'pointer-events-none');
+      sidebarOverlay.classList.remove('opacity-100');
+    });
+  }
+</script>
+</body>
+</html>
