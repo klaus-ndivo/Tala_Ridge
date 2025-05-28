@@ -32,55 +32,58 @@
   </style>
 </head>
 <body class="m-0 p-0 bg-[#f5eee6]">
-  <div class="relative min-h-screen w-full overflow-hidden pt-20">
-    <!-- Navbar -->
-    <nav class="fixed top-0 left-0 w-full z-20 flex items-center justify-between px-4 sm:px-8 md:px-16 lg:px-32 xl:px-48 py-4 bg-white/80 backdrop-blur-sm border-b border-white/20 transition-shadow">
-      <div class="flex items-center space-x-2">
-        <button id="menuBtn" class="flex items-center space-x-2 text-gray-800 font-semibold uppercase tracking-wider focus:outline-none">
-          <span>
-            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-              <line x1="4" y1="7" x2="20" y2="7" stroke="currentColor" stroke-linecap="round"/>
-              <line x1="4" y1="12" x2="20" y2="12" stroke="currentColor" stroke-linecap="round"/>
-              <line x1="4" y1="17" x2="20" y2="17" stroke="currentColor" stroke-linecap="round"/>
-            </svg>
-          </span>
-        </button>
-      </div>
-      <div class="flex flex-col items-center">
-        <img src="{% static 'Images/logo-4.png' %}" alt="Tala Ridge Logo" class="h-12 w-auto mb-1 select-none" style="object-fit:contain;">
-      </div>
-      <div>
-        <a href="{% url 'home' %}#contact-section" class="bg-yellow-900 text-white font-semibold px-3 sm:px-4 md:px-6 py-2 rounded shadow hover:bg-yellow-800 transition uppercase tracking-widest text-xs sm:text-sm">
+  <!-- Navbar -->
+<nav class="fixed top-0 left-0 w-full z-20 flex items-center justify-between px-4 sm:px-8 md:px-16 lg:px-32 xl:px-48 py-4 bg-white/95 backdrop-blur-sm border-b border-yellow-900/10 transition-shadow">
+  <div class="flex items-center space-x-2">
+    <button id="menuBtn" class="flex items-center space-x-2 text-yellow-900 font-semibold uppercase tracking-wider focus:outline-none">
+      <span>
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+          <line x1="4" y1="7" x2="20" y2="7" stroke="currentColor" stroke-linecap="round"/>
+          <line x1="4" y1="12" x2="20" y2="12" stroke="currentColor" stroke-linecap="round"/>
+          <line x1="4" y1="17" x2="20" y2="17" stroke="currentColor" stroke-linecap="round"/>
+        </svg>
+      </span>
+    </button>
+  </div>
+  <div class="flex flex-col items-center">
+    <img src="{% static 'Images/logo-4.png' %}" alt="Tala Ridge Logo" class="h-12 w-auto mb-1 select-none" style="object-fit:contain;">
+    <span class="font-bold text-lg tracking-widest animate-pulse text-yellow-900">TALA RIDGE</span>
+  </div>
+  <div>
+    <a href="{% url 'home' %}#contact-section" class="bg-yellow-900 text-white font-semibold px-3 sm:px-4 md:px-6 py-2 rounded shadow hover:bg-yellow-800 transition uppercase tracking-widest text-xs sm:text-sm">
+      Contact Us
+    </a>
+  </div>
+</nav>
+
+  <!-- Sidebar Overlay -->
+  <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-40 z-30 transition-opacity duration-300 opacity-0 pointer-events-none"></div>
+
+  <!-- Sidebar -->
+  <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 sm:w-72 bg-white/95 backdrop-blur-md z-40 transform -translate-x-full transition-transform duration-500 ease-in-out shadow-2xl flex flex-col border-r border-yellow-900/10">
+    <div class="flex items-center justify-between px-6 py-6 border-b border-yellow-900/10">
+      <span class="text-yellow-900 text-xl sm:text-2xl font-extrabold tracking-widest">Menu</span>
+      <button id="closeSidebar" class="text-yellow-900 text-2xl focus:outline-none">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <nav class="flex-1 px-6 py-8">
+      <ul class="space-y-6">
+        <li><a href="{% url 'home' %}" class="text-black font-bold text-base sm:text-lg">Home</a></li>
+        <li><a href="{% url 'gardens' %}" class="text-black font-semibold text-base sm:text-lg hover:text-yellow-900 transition">The Gardens</a></li>
+        <li><a href="{% url 'accomodation' %}" class="text-yellow-900 font-semibold text-base sm:text-lg hover:text-yellow-900 transition">Accomodation</a></li>
+        <li><a href="{% url 'restaurant' %}" class="text-black font-semibold text-base sm:text-lg hover:text-yellow-900 transition">Restaurant</a></li>
+        <li><a href="{% url 'swimming' %}" class="text-black font-semibold text-base sm:text-lg hover:text-yellow-900 transition">Swimming Pool</a></li>
+        <li><a href="{% url 'bar' %}" class="text-black font-semibold text-base sm:text-lg hover:text-yellow-900 transition">Bar & Lounge</a></li>
+        <li><a href="{% url 'conferencing' %}" class="text-black font-semibold text-base sm:text-lg hover:text-yellow-900 transition">Conferencing</a></li>
+        <li><a href="#contact-section" class="bg-yellow-900 text-white font-semibold px-3 sm:px-4 md:px-6 py-2 rounded shadow hover:bg-yellow-800 transition uppercase tracking-widest text-xs sm:text-sm">
           Contact Us
-        </a>
-      </div>
-    </nav>
-
-    <!-- Sidebar Overlay -->
-    <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-40 z-30 transition-opacity duration-300 opacity-0 pointer-events-none"></div>
-
-    <!-- Sidebar -->
-    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 sm:w-72 bg-[#4b2413]/80 backdrop-blur-md z-40 transform -translate-x-full transition-transform duration-500 ease-in-out shadow-2xl flex flex-col">
-      <div class="flex items-center justify-between px-6 py-6 border-b border-white/10">
-        <span class="text-white text-xl sm:text-2xl font-extrabold tracking-widest">Menu</span>
-        <button id="closeSidebar" class="text-white text-2xl focus:outline-none">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <nav class="flex-1 px-6 py-8">
-        <ul class="space-y-6">
-          <li><a href="{% url 'home' %}" class="text-yellow-400 font-bold text-base sm:text-lg">Home</a></li>
-          <li><a href="{% url 'gardens' %}" class="text-white font-semibold text-base sm:text-lg hover:text-yellow-600 transition">The Gardens</a></li>
-          <li><a href="{% url 'accomodation' %}" class="text-white font-semibold text-base sm:text-lg hover:text-yellow-600 transition">Accomodation</a></li>
-          <li><a href="{% url 'restaurant' %}" class="text-white font-semibold text-base sm:text-lg hover:text-yellow-600 transition">Restaurant</a></li>
-          <li><a href="{% url 'swimming' %}" class="text-white font-semibold text-base sm:text-lg hover:text-yellow-600 transition">Swimming Pool</a></li>
-          <li><a href="{% url 'bar' %}" class="text-white font-semibold text-base sm:text-lg hover:text-yellow-600 transition">Bar & Lounge</a></li>
-          <li><a href="#" class="text-white font-semibold text-base sm:text-lg hover:text-yellow-600 transition">Conferencing</a></li>
-          <li><a href="{% url 'home' %}#contact-section" class="text-white font-semibold text-base sm:text-lg hover:text-yellow-600 transition">Contacts</a></li>
+          </a></li>      
         </ul>
-      </nav>
-    </aside>
+    </nav>
+  </aside>
 
+  <div class="relative min-h-screen w-full overflow-hidden pt-20">
     <!-- Hero Section -->
     <section class="w-full pt-16 pb-10 bg-gradient-to-b from-white/80 to-[#f5eee6]">
       <div class="max-w-5xl mx-auto px-4 text-center">
@@ -312,7 +315,8 @@
         <p class="text-gray-700 mb-6 text-center max-w-xl">
           Fill in your details and our team will get back to you as soon as possible.
         </p>
-        <form class="w-full max-w-lg space-y-4">
+        <form id="bookingForm" method="post" class="w-full max-w-lg space-y-4">
+          {% csrf_token %}
           <div class="flex flex-col sm:flex-row gap-4">
             <input type="text" name="name" placeholder="Your Name" required
               class="flex-1 px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-yellow-400 focus:outline-none bg-white/80 text-gray-800 text-sm transition" />
@@ -327,6 +331,8 @@
             class="w-full bg-yellow-900 hover:bg-yellow-800 text-white font-bold py-3 rounded-lg transition text-sm uppercase tracking-widest shadow">
             Send Booking Request
           </button>
+          <div id="bookingSuccess" class="hidden text-yellow-600 font-bold mt-2 text-center">Thank you! We have received your booking.</div>
+          <div id="bookingError" class="hidden text-red-600 font-bold mt-2 text-center">Sorry, there was a problem. Please try again.</div>
         </form>
       </div>
     </div>
@@ -401,7 +407,7 @@
     .delay-600 { animation-delay: 0.6s !important; }
   </style>
 
-  <!-- Sidebar Script -->
+  <!-- Sidebar JS (place before </body>) -->
   <script>
     const menuBtn = document.getElementById('menuBtn');
     const sidebar = document.getElementById('sidebar');
@@ -410,23 +416,20 @@
 
     menuBtn.addEventListener('click', () => {
       sidebar.classList.remove('-translate-x-full');
-      sidebar.classList.add('translate-x-0');
       sidebarOverlay.classList.remove('opacity-0', 'pointer-events-none');
       sidebarOverlay.classList.add('opacity-100');
     });
 
     closeSidebar.addEventListener('click', () => {
-      sidebar.classList.remove('translate-x-0');
       sidebar.classList.add('-translate-x-full');
-      sidebarOverlay.classList.remove('opacity-100');
       sidebarOverlay.classList.add('opacity-0', 'pointer-events-none');
+      sidebarOverlay.classList.remove('opacity-100');
     });
 
     sidebarOverlay.addEventListener('click', () => {
-      sidebar.classList.remove('translate-x-0');
       sidebar.classList.add('-translate-x-full');
-      sidebarOverlay.classList.remove('opacity-100');
       sidebarOverlay.classList.add('opacity-0', 'pointer-events-none');
+      sidebarOverlay.classList.remove('opacity-100');
     });
 
     // Modal logic
@@ -465,6 +468,64 @@
       if (e.target === bookingModal) {
         bookingModal.classList.remove('opacity-100');
         bookingModal.classList.add('opacity-0', 'pointer-events-none');
+      }
+    });
+
+    // Booking form AJAX submission (like home.html)
+    document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+
+      // Loader
+      let loader = document.createElement('div');
+      loader.id = "booking-loader";
+      loader.innerHTML = `
+        <div class="fixed inset-0 flex items-center justify-center z-50 bg-black/30">
+          <div class="flex flex-col items-center">
+            <div class="w-16 h-16 border-4 border-yellow-400 border-t-transparent rounded-full animate-spin mb-4"></div>
+            <span class="text-yellow-900 font-bold text-lg animate-pulse">Processing your booking...</span>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(loader);
+
+      const response = await fetch("/book/", {
+        method: "POST",
+        headers: {'X-Requested-With': 'XMLHttpRequest'},
+        body: data
+      });
+
+      loader.remove();
+
+      if (response.ok) {
+        form.reset();
+        document.getElementById('bookingSuccess').classList.remove('hidden');
+        document.getElementById('bookingError').classList.add('hidden');
+        // Fancy animated notification
+        let notif = document.createElement('div');
+        notif.innerHTML = `
+          <div class="flex items-center space-x-3">
+            <span class="inline-flex items-center justify-center bg-yellow-900 rounded-full w-10 h-10 animate-bounce">
+              <i class="fa fa-check text-white text-2xl"></i>
+            </span>
+            <span class="text-lg font-bold text-yellow-900 animate-fade-in-up">Booking received! We will contact you soon.</span>
+          </div>
+        `;
+        notif.className = "fixed top-8 right-8 bg-yellow-100 border-2 border-yellow-900 shadow-2xl px-6 py-4 rounded-xl z-50 animate-slide-in-right";
+        document.body.appendChild(notif);
+        setTimeout(() => {
+          notif.classList.add('animate-fade-out');
+          setTimeout(() => notif.remove(), 700);
+        }, 3500);
+        // Auto-close modal after success
+        setTimeout(() => {
+          bookingModal.classList.remove('opacity-100');
+          bookingModal.classList.add('opacity-0', 'pointer-events-none');
+        }, 1800);
+      } else {
+        document.getElementById('bookingError').classList.remove('hidden');
+        document.getElementById('bookingSuccess').classList.add('hidden');
       }
     });
   </script>

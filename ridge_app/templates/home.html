@@ -27,9 +27,9 @@
       <div class="flex flex-col items-center">
           <img src="{% static 'Images/logo-4.png' %}" alt="Tala Ridge Logo" class="h-12 w-auto mb-1 select-none" style="object-fit:contain;">      </div>
       <div>
-        <a href="#" class="bg-yellow-900 text-white font-semibold px-3 sm:px-4 md:px-6 py-2 rounded shadow hover:bg-yellow-800 transition uppercase tracking-widest text-xs sm:text-sm">
+      <a href="#contact-section" class="bg-yellow-900 text-white font-semibold px-3 sm:px-4 md:px-6 py-2 rounded shadow hover:bg-yellow-800 transition uppercase tracking-widest text-xs sm:text-sm">
           Contact Us
-        </a>
+      </a>
       </div>
     </nav>
 
@@ -53,7 +53,9 @@
           <li><a href="{% url 'swimming' %}" class="text-white font-semibold text-base sm:text-lg hover:text-cyan-300 transition">Swimming Pool</a></li>
           <li><a href="{% url 'bar' %}" class="text-white font-semibold text-base sm:text-lg hover:text-cyan-300 transition">Bar & Lounge</a></li>
           <li><a href="{% url 'conferencing' %}" class="text-white font-semibold text-base sm:text-lg hover:text-cyan-300 transition">Conferencing</a></li>
-          <li><a href="{% url 'home' %}" contact-section class="text-white font-semibold text-base sm:text-lg hover:text-cyan-300 transition">Contacts</a></li>
+          <li><a href="#contact-section" class="bg-yellow-900 text-white font-semibold px-3 sm:px-4 md:px-6 py-2 rounded shadow hover:bg-yellow-800 transition uppercase tracking-widest text-xs sm:text-sm">
+          Contact Us
+          </a></li>
         </ul>
       </nav>
     </aside>
@@ -197,8 +199,8 @@
       <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 text-gray-900 tracking-tight">What We Offer</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center">
         <!-- Card 1 -->
-        <div class="offer-card bg-white rounded-xl shadow-lg overflow-hidden w-full max-w-xs transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl group opacity-0">
-          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&auto=format&fit=crop&q=90" alt="Elegant Stays" class="w-full h-48 object-cover object-center transition-transform duration-500 group-hover:scale-105">
+        <div class="offer-card w-full max-w-xs bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl group opacity-0">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&auto=format&fit=crop&q=90" alt="Elegant Stays" class="w-full h-48 sm:h-48 object-cover object-center transition-transform duration-500 group-hover:scale-105">
           <div class="p-5 text-center">
             <h3 class="font-semibold text-lg text-gray-800 mb-2">Elegant Stays</h3>
             <p class="text-gray-600 text-sm">Experience comfort and style in our beautifully designed rooms and suites.</p>
@@ -208,8 +210,8 @@
           </button>
         </div>
         <!-- Card 2 -->
-        <div class="offer-card bg-white rounded-xl shadow-lg overflow-hidden w-full max-w-xs transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl group opacity-0">
-          <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=400&auto=format&fit=crop&q=90" alt="Gourmet Dining" class="w-full h-48 object-cover object-center transition-transform duration-500 group-hover:scale-105">
+        <div class="offer-card w-full max-w-xs bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl group opacity-0">
+          <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=400&auto=format&fit=crop&q=90" alt="Gourmet Dining" class="w-full h-48 sm:h-48 object-cover object-center transition-transform duration-500 group-hover:scale-105">
           <div class="p-5 text-center">
             <h3 class="font-semibold text-lg text-gray-800 mb-2">Gourmet Dining</h3>
             <p class="text-gray-600 text-sm">Savor exquisite cuisine prepared by our talented chefs in a serene setting.</p>
@@ -219,8 +221,8 @@
           </button>
         </div>
         <!-- Card 3 -->
-        <div class="offer-card bg-white rounded-xl shadow-lg overflow-hidden w-full max-w-xs transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl group opacity-0">
-          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&auto=format&fit=crop&q=90" alt="Wellness Retreat" class="w-full h-48 object-cover object-center transition-transform duration-500 group-hover:scale-105">
+        <div class="offer-card w-full max-w-xs bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl group opacity-0">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&auto=format&fit=crop&q=90" alt="Wellness Retreat" class="w-full h-48 sm:h-48 object-cover object-center transition-transform duration-500 group-hover:scale-105">
           <div class="p-5 text-center">
             <h3 class="font-semibold text-lg text-gray-800 mb-2">Wellness Retreat</h3>
             <p class="text-gray-600 text-sm">Relax and rejuvenate with our spa, wellness, and fitness facilities.</p>
@@ -230,8 +232,8 @@
           </button>
         </div>
         <!-- Card 4 -->
-        <div class="offer-card bg-white rounded-xl shadow-lg overflow-hidden w-full max-w-xs transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl group opacity-0">
-          <img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?w=400&auto=format&fit=crop&q=90" alt="Event Spaces" class="w-full h-48 object-cover object-center transition-transform duration-500 group-hover:scale-105">
+        <div class="offer-card w-full max-w-xs bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl group opacity-0">
+          <img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?w=400&auto=format&fit=crop&q=90" alt="Event Spaces" class="w-full h-48 sm:h-48 object-cover object-center transition-transform duration-500 group-hover:scale-105">
           <div class="p-5 text-center">
             <h3 class="font-semibold text-lg text-gray-800 mb-2">Event Spaces</h3>
             <p class="text-gray-600 text-sm">Host memorable events in our versatile and elegant venues.</p>
@@ -241,8 +243,8 @@
           </button>
         </div>
         <!-- Card 5 -->
-        <div class="offer-card bg-white rounded-xl shadow-lg overflow-hidden w-full max-w-xs transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl group opacity-0">
-          <img src="https://images.unsplash.com/photo-1509228468518-c5eeecbff44a?w=400&auto=format&fit=crop&q=90" alt="Swimming Pool" class="w-full h-48 object-cover object-center transition-transform duration-500 group-hover:scale-105">
+        <div class="offer-card w-full max-w-xs bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl group opacity-0">
+          <img src="https://images.unsplash.com/photo-1509228468518-c5eeecbff44a?w=400&auto=format&fit=crop&q=90" alt="Swimming Pool" class="w-full h-48 sm:h-48 object-cover object-center transition-transform duration-500 group-hover:scale-105">
           <div class="p-5 text-center">
             <h3 class="font-semibold text-lg text-gray-800 mb-2">Swimming Pool</h3>
             <p class="text-gray-600 text-sm">Enjoy a refreshing dip or relax by our sparkling outdoor pool.</p>
@@ -252,8 +254,8 @@
           </button>
         </div>
         <!-- Card 6 -->
-        <div class="offer-card bg-white rounded-xl shadow-lg overflow-hidden w-full max-w-xs transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl group opacity-0">
-          <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?w=400&auto=format&fit=crop&q=90" alt="Bar & Lounge" class="w-full h-48 object-cover object-center transition-transform duration-500 group-hover:scale-105">
+        <div class="offer-card w-full max-w-xs bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl group opacity-0">
+          <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?w=400&auto=format&fit=crop&q=90" alt="Bar & Lounge" class="w-full h-48 sm:h-48 object-cover object-center transition-transform duration-500 group-hover:scale-105">
           <div class="p-5 text-center">
             <h3 class="font-semibold text-lg text-gray-800 mb-2">Bar & Lounge</h3>
             <p class="text-gray-600 text-sm">Unwind with signature drinks and great company in our stylish lounge.</p>
@@ -263,8 +265,8 @@
           </button>
         </div>
         <!-- Card 7 -->
-        <div class="offer-card bg-white rounded-xl shadow-lg overflow-hidden w-full max-w-xs transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl group opacity-0">
-          <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=400&auto=format&fit=crop&q=90" alt="Nature Walks" class="w-full h-48 object-cover object-center transition-transform duration-500 group-hover:scale-105">
+        <div class="offer-card w-full max-w-xs bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl group opacity-0">
+          <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=400&auto=format&fit=crop&q=90" alt="Nature Walks" class="w-full h-48 sm:h-48 object-cover object-center transition-transform duration-500 group-hover:scale-105">
           <div class="p-5 text-center">
             <h3 class="font-semibold text-lg text-gray-800 mb-2">Nature Walks</h3>
             <p class="text-gray-600 text-sm">Explore scenic trails and enjoy the tranquility of our natural surroundings.</p>
@@ -273,6 +275,31 @@
             Book Now
           </button>
         </div>
+        <!-- Card 8: New Card Example -->
+        <div class="offer-card w-full max-w-xs bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl group opacity-0">
+          <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=400&auto=format&fit=crop&q=90" alt="Kids Playground" class="w-full h-48 sm:h-48 object-cover object-center transition-transform duration-500 group-hover:scale-105">
+          <div class="p-5 text-center">
+            <h3 class="font-semibold text-lg text-gray-800 mb-2">Kids Playground</h3>
+            <p class="text-gray-600 text-sm">Safe and fun play area for children to enjoy their stay.</p>
+          </div>
+          <button class="book-btn bg-yellow-900 text-white font-bold px-4 py-2 rounded shadow hover:bg-yellow-800 transition uppercase tracking-widest text-xs">
+            Book Now
+          </button>
+        </div>
+        <!-- END Card 8 -->
+
+        <!-- Add images to cards that lack them (if any) -->
+        <!-- Example: If you had a card without an image, add an <img> tag at the top of the card like this: -->
+        <!--
+        <div class="offer-card ...">
+          <img src="IMAGE_URL_HERE" alt="Card Title" class="w-full h-48 sm:h-48 object-cover object-center transition-transform duration-500 group-hover:scale-105">
+          <div class="p-5 text-center">
+            <h3 class="font-semibold text-lg text-gray-800 mb-2">Card Title</h3>
+            <p class="text-gray-600 text-sm">Card description here.</p>
+          </div>
+          <button ...>Book Now</button>
+        </div>
+        -->
       </div>
     </div>
   </section>
@@ -295,7 +322,7 @@
         <p class="text-white mb-8 text-center max-w-xl">
           Have questions or want to book your stay? Reach out and our team will get back to you as soon as possible.
         </p>
-        <form id="contactForm" method="post" class="max-w-xl mx-auto bg-white p-6 rounded shadow space-y-4">
+        <form id="contactForm" method="post" class="w-full max-w-xl mx-auto bg-white p-4 sm:p-6 rounded shadow space-y-4">
           {% csrf_token %}
           <input type="text" name="name" placeholder="Your Name" required class="w-full border p-2 rounded" />
           <input type="email" name="email" placeholder="Your Email" required class="w-full border p-2 rounded" />
@@ -342,6 +369,38 @@
       </div>
     </div>
   </footer>
+
+  <!-- Booking Modal -->
+<div id="bookingModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 transition-opacity duration-300 opacity-0 pointer-events-none">
+  <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-12 w-full max-w-lg relative animate-fade-in-up">
+    <button id="closeModal" class="absolute top-4 right-4 text-gray-500 hover:text-yellow-900 text-2xl focus:outline-none">
+      <i class="fas fa-times"></i>
+    </button>
+    <h2 class="text-2xl sm:text-3xl font-bold text-yellow-900 mb-4 text-center">Book Your Stay</h2>
+    <p class="text-gray-700 mb-6 text-center max-w-xl">
+      Fill in your details and our team will get back to you as soon as possible.
+    </p>
+    <form id="bookingForm" method="post" class="w-full max-w-lg space-y-4">
+      {% csrf_token %}
+      <div class="flex flex-col sm:flex-row gap-4">
+        <input type="text" name="name" placeholder="Your Name" required
+          class="flex-1 px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-yellow-400 focus:outline-none bg-white/80 text-gray-800 text-sm transition" />
+        <input type="email" name="email" placeholder="Your Email" required
+          class="flex-1 px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-yellow-400 focus:outline-none bg-white/80 text-gray-800 text-sm transition" />
+      </div>
+      <input type="text" name="room_type" id="roomTypeInput" placeholder="Room Type" required
+        class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-yellow-400 focus:outline-none bg-white/80 text-gray-800 text-sm transition" />
+      <textarea name="message" rows="3" placeholder="Additional Requests (optional)"
+        class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-yellow-400 focus:outline-none bg-white/80 text-gray-800 text-sm transition"></textarea>
+      <button type="submit"
+        class="w-full bg-yellow-900 hover:bg-yellow-800 text-white font-bold py-3 rounded-lg transition text-sm uppercase tracking-widest shadow">
+        Send Booking Request
+      </button>
+      <div id="bookingSuccess" class="hidden text-yellow-600 font-bold mt-2 text-center">Thank you! We have received your booking.</div>
+      <div id="bookingError" class="hidden text-red-600 font-bold mt-2 text-center">Sorry, there was a problem. Please try again.</div>
+    </form>
+  </div>
+</div>
 
   <script>
     const menuBtn = document.getElementById('menuBtn');
@@ -436,7 +495,19 @@
   e.preventDefault();
   const form = e.target;
   const data = Object.fromEntries(new FormData(form).entries());
-  // Optionally: validate data here
+
+  // --- Loader Element ---
+  let loader = document.createElement('div');
+  loader.id = "booking-loader";
+  loader.innerHTML = `
+    <div class="fixed inset-0 flex items-center justify-center z-50 bg-black/30">
+      <div class="flex flex-col items-center">
+        <div class="w-16 h-16 border-4 border-yellow-400 border-t-transparent rounded-full animate-spin mb-4"></div>
+        <span class="text-yellow-900 font-bold text-lg animate-pulse">Processing your booking...</span>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(loader);
 
   // Send to Django endpoint (update '/book/' to your booking URL)
   const response = await fetch('/book/', {
@@ -447,9 +518,28 @@
     },
     body: JSON.stringify(data)
   });
+
+  // Remove loader after response
+  loader.remove();
+
   if (response.ok) {
     form.reset();
-    alert('Booking received! We will contact you soon.');
+    // Fancy animated notification
+    let notif = document.createElement('div');
+    notif.innerHTML = `
+      <div class="flex items-center space-x-3">
+        <span class="inline-flex items-center justify-center bg-yellow-900 rounded-full w-10 h-10 animate-bounce">
+          <i class="fa fa-check text-white text-2xl"></i>
+        </span>
+        <span class="text-lg font-bold text-yellow-900 animate-fade-in-up">Booking received! We will contact you soon.</span>
+      </div>
+    `;
+    notif.className = "fixed top-8 right-8 bg-yellow-100 border-2 border-yellow-900 shadow-2xl px-6 py-4 rounded-xl z-50 animate-slide-in-right";
+    document.body.appendChild(notif);
+    setTimeout(() => {
+      notif.classList.add('animate-fade-out');
+      setTimeout(() => notif.remove(), 700);
+    }, 3500);
   } else {
     alert('There was a problem. Please try again.');
   }
@@ -470,13 +560,146 @@ document.getElementById('contactForm').addEventListener('submit', async function
     form.reset();
     // Notification (toast style)
     let notif = document.createElement('div');
-    notif.innerText = "Message sent successfully!";
-    notif.className = "fixed top-6 right-6 bg-green-600 text-white px-6 py-3 rounded shadow-lg z-50 animate-bounce";
+    notif.innerHTML = `
+      <div class="flex items-center space-x-3">
+        <span class="inline-flex items-center justify-center bg-yellow-900 rounded-full w-10 h-10 animate-bounce">
+          <i class="fa fa-check text-white text-2xl"></i>
+        </span>
+        <span class="text-lg font-bold text-yellow-900 animate-fade-in-up">Message sent! We will contact you soon.</span>
+      </div>
+    `;
+    notif.className = "fixed top-8 right-8 bg-yellow-100 border-2 border-yellow-900 shadow-2xl px-6 py-4 rounded-xl z-50 animate-slide-in-right";
     document.body.appendChild(notif);
-    setTimeout(() => notif.remove(), 3000);
+    setTimeout(() => {
+      notif.classList.add('animate-fade-out');
+      setTimeout(() => notif.remove(), 700);
+    }, 3500);
   } else {
     document.getElementById('contactError').classList.remove('hidden');
     document.getElementById('contactSuccess').classList.add('hidden');
+  }
+});
+
+// Add this script after your other JS, before </body>
+document.querySelectorAll('a[href="#contact-section"]').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const section = document.getElementById('contact-section');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+    // Optionally close sidebar if open
+    if (typeof closeMenu === 'function') closeMenu();
+  });
+});
+
+// Add this script before </body> to enable tap-to-activate on touch devices
+document.querySelectorAll('.offer-card').forEach(card => {
+  card.addEventListener('touchstart', function(e) {
+    // Remove .active from all cards except this one
+    document.querySelectorAll('.offer-card.active').forEach(c => {
+      if (c !== card) c.classList.remove('active');
+    });
+    card.classList.add('active');
+  });
+  // Optional: remove .active when tapping outside any card
+  document.body.addEventListener('touchstart', function(e) {
+    if (!card.contains(e.target)) card.classList.remove('active');
+  }, {passive: true});
+});
+
+// Modal logic for Offer Cards
+const bookingModal = document.getElementById('bookingModal');
+const closeModal = document.getElementById('closeModal');
+const bookNowBtns = document.querySelectorAll('.offer-card .book-btn');
+const roomTypeInput = document.getElementById('roomTypeInput');
+
+// Open modal on Book Now click
+bookNowBtns.forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    bookingModal.classList.remove('opacity-0', 'pointer-events-none');
+    bookingModal.classList.add('opacity-100');
+    // Set room type if available
+    const card = btn.closest('.offer-card');
+    if (card) {
+      const roomTitle = card.querySelector('h3');
+      if (roomTitle && roomTypeInput) {
+        roomTypeInput.value = roomTitle.textContent.trim();
+      }
+    }
+  });
+});
+
+// Close modal
+closeModal.addEventListener('click', () => {
+  bookingModal.classList.remove('opacity-100');
+  bookingModal.classList.add('opacity-0', 'pointer-events-none');
+});
+
+// Close modal when clicking outside the form
+bookingModal.addEventListener('click', (e) => {
+  if (e.target === bookingModal) {
+    bookingModal.classList.remove('opacity-100');
+    bookingModal.classList.add('opacity-0', 'pointer-events-none');
+  }
+});
+
+// Booking form AJAX submission
+document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
+
+  // Loader
+  let loader = document.createElement('div');
+  loader.id = "booking-loader";
+  loader.innerHTML = `
+    <div class="fixed inset-0 flex items-center justify-center z-50 bg-black/30">
+      <div class="flex flex-col items-center">
+        <div class="w-16 h-16 border-4 border-yellow-400 border-t-transparent rounded-full animate-spin mb-4"></div>
+        <span class="text-yellow-900 font-bold text-lg animate-pulse">Processing your booking...</span>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(loader);
+
+  const response = await fetch("/book/", {
+    method: "POST",
+    headers: {'X-Requested-With': 'XMLHttpRequest'},
+    body: data
+  });
+
+  loader.remove();
+
+  if (response.ok) {
+    form.reset();
+    document.getElementById('bookingSuccess').classList.remove('hidden');
+    document.getElementById('bookingError').classList.add('hidden');
+    // Fancy animated notification
+    let notif = document.createElement('div');
+    notif.innerHTML = `
+      <div class="flex items-center space-x-3">
+        <span class="inline-flex items-center justify-center bg-yellow-900 rounded-full w-10 h-10 animate-bounce">
+          <i class="fa fa-check text-white text-2xl"></i>
+        </span>
+        <span class="text-lg font-bold text-yellow-900 animate-fade-in-up">Booking received! We will contact you soon.</span>
+      </div>
+    `;
+    notif.className = "fixed top-8 right-8 bg-yellow-100 border-2 border-yellow-900 shadow-2xl px-6 py-4 rounded-xl z-50 animate-slide-in-right";
+    document.body.appendChild(notif);
+    setTimeout(() => {
+      notif.classList.add('animate-fade-out');
+      setTimeout(() => notif.remove(), 700);
+    }, 3500);
+    // Auto-close modal after success
+    setTimeout(() => {
+      bookingModal.classList.remove('opacity-100');
+      bookingModal.classList.add('opacity-0', 'pointer-events-none');
+    }, 1800);
+  } else {
+    document.getElementById('bookingError').classList.remove('hidden');
+    document.getElementById('bookingSuccess').classList.add('hidden');
   }
 });
   </script>
@@ -501,11 +724,18 @@ document.getElementById('contactForm').addEventListener('submit', async function
       0% { opacity: 0; transform: translateX(80px);}
       100% { opacity: 1; transform: translateX(0);}
     }
+    @keyframes slide-in-right {
+      0% { opacity: 0; transform: translateX(80px);}
+      100% { opacity: 1; transform: translateX(0);}
+    }
     .animate-slide-in-left {
       animation: slide-in-left 1.2s cubic-bezier(.4,2,.6,1) both;
     }
     .animate-slide-in-center {
       animation: slide-in-center 1.2s cubic-bezier(.4,2,.6,1) both;
+    }
+    .animate-slide-in-right {
+      animation: slide-in-right 0.7s cubic-bezier(.4,2,.6,1) both;
     }
     @keyframes card-in {
       0% { opacity: 0; transform: translateY(40px) scale(0.96);}
@@ -520,6 +750,20 @@ document.getElementById('contactForm').addEventListener('submit', async function
     }
     .animate-contact-in {
       animation: contact-in 1s cubic-bezier(.4,2,.6,1) both;
+    }
+    @keyframes fade-in-up {
+      0% { opacity: 0; transform: translateY(20px);}
+      100% { opacity: 1; transform: translateY(0);}
+    }
+    .animate-fade-in-up {
+      animation: fade-in-up 0.7s both;
+    }
+    @keyframes fade-out {
+      0% { opacity: 1;}
+      100% { opacity: 0;}
+    }
+    .animate-fade-out {
+      animation: fade-out 0.7s both;
     }
 
     /* Add this to your <style> block in home.html */
@@ -541,56 +785,46 @@ document.getElementById('contactForm').addEventListener('submit', async function
       transition: transform 0.4s cubic-bezier(.4,2,.6,1);
       will-change: transform;
     }
-    .offer-card .book-btn {
-      opacity: 0;
-      pointer-events: none;
-      position: relative;
-      width: 100%;
-      margin: 0 auto;
-      margin-top: -2.5rem;
-      transform: translateY(40px);
-      transition: opacity 0.4s cubic-bezier(.4,2,.6,1), transform 0.4s cubic-bezier(.4,2,.6,1);
-      z-index: 3;
-      display: block;
-    }
-    .offer-card:hover .p-5,
-    .offer-card:focus-within .p-5 {
-      transform: translateY(-2.5rem);
-    }
-    .offer-card:hover .book-btn,
-    .offer-card:focus-within .book-btn {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-    .offer-card img {
-      transition: transform 0.4s cubic-bezier(.4,2,.6,1);
-    }
-    .offer-card:hover img,
-    .offer-card:focus-within img {
-      transform: scale(1.08) brightness(0.85);
-    }
+    /* Make offer-card hover/focus behavior work on all devices (including touch) */
+.offer-card .book-btn {
+  opacity: 0;
+  pointer-events: none;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: -2.5rem;
+  transform: translateY(40px);
+  transition: opacity 0.4s cubic-bezier(.4,2,.6,1), transform 0.4s cubic-bezier(.4,2,.6,1);
+  z-index: 3;
+  display: block;
+}
+.offer-card:hover .p-5,
+.offer-card:focus-within .p-5,
+.offer-card.active .p-5 {
+  transform: translateY(-2.5rem);
+}
+.offer-card:hover .book-btn,
+.offer-card:focus-within .book-btn,
+.offer-card.active .book-btn {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.offer-card img {
+  transition: transform 0.4s cubic-bezier(.4,2,.6,1);
+}
+.offer-card:hover img,
+.offer-card:focus-within img,
+.offer-card.active img {
+  transform: scale(1.08) brightness(0.85);
+}
 
-    /* Styles for swimming.html cards */
-    .swim-card {
-      @apply relative overflow-hidden rounded-xl shadow-lg bg-white transition-all duration-300;
-    }
-    .swim-card-img {
-      @apply w-full h-56 object-cover transition-all duration-500;
-    }
-    .swim-card-info {
-      @apply absolute left-0 right-0 bottom-0 bg-white/95 px-6 py-5 transition-all duration-500;
-      bottom: -100%;
-    }
-    .swim-card:hover .swim-card-info,
-    .swim-card:focus-within .swim-card-info {
-      bottom: 0;
-    }
-    .swim-card:hover .swim-card-img,
-    .swim-card:focus-within .swim-card-img {
-      filter: brightness(0.7) blur(1px);
-      transform: scale(1.08);
-    }
+/* Touch support: toggle .active on tap */
+@media (hover: none) and (pointer: coarse) {
+  .offer-card .book-btn {
+    transition: opacity 0.4s, transform 0.4s;
+  }
+}
   </style>
 </body>
 </html>

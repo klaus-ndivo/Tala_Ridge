@@ -45,13 +45,15 @@ def contacts(request):
 @csrf_exempt
 def book(request):
     if request.method == 'POST':
-        data = json.loads(request.body)
-        # Save booking to DB here if needed
-
+        # Use request.POST for form data
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        room_type = request.POST.get('room_type')
+        message = request.POST.get('message')
         # Send notification email
         send_mail(
             subject="New Booking Received",
-            message=f"Booking details:\nName: {data.get('name')}\nEmail: {data.get('email')}\nDate: {data.get('date')}\nGuests: {data.get('guests')}\nMessage: {data.get('message')}",
+            message=f"Booking details:\nName: {name}\nEmail: {email}\nRoom Type: {room_type}\nMessage: {message}",
             from_email="noreply@talaridge.com",
             recipient_list=["charlesndivo847@gmail.com"],  # Change to your admin email
             fail_silently=False,
