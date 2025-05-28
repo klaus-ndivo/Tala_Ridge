@@ -27,10 +27,7 @@ DEBUG = True
 
 
 ALLOWED_HOSTS = [
-    'talaridge-production.up.railway.app',
-    '127.0.0.1', 
-    'localhost'
-]
+    ]
 
 
 # Application definition
