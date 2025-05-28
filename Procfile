@@ -1,1 +1,1 @@
-web: gunicorn Tala_Ridge.wsgi:application 
+web: gunicorn ridge_proj.wsgi:application 
