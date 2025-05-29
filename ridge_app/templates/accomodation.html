@@ -6,6 +6,7 @@
   <title>Accomodation | Tala Ridge</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   {% load static %}
   <style>
     html {
@@ -29,6 +30,26 @@
     .pb-10 { padding-bottom: 2rem !important; }
     .rounded-xl { border-radius: 0.75rem !important; }
     /* You can further tweak as needed */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+    .room-card {
+      transition: all 0.3s ease;
+    }
+    .room-card:hover {
+      transform: translateY(-10px);
+    }
+    .amenity-icon {
+      transition: all 0.3s ease;
+    }
+    .amenity-icon:hover {
+      transform: scale(1.1);
+    }
   </style>
 </head>
 <body class="m-0 p-0 bg-[#f5eee6]">
@@ -83,329 +104,618 @@
     </nav>
   </aside>
 
-  <div class="relative min-h-screen w-full overflow-hidden pt-20">
-    <!-- Hero Section -->
-    <section class="w-full pt-16 pb-10 bg-gradient-to-b from-white/80 to-[#f5eee6]">
-      <div class="max-w-5xl mx-auto px-4 text-center">
-        <h1 class="text-4xl md:text-5xl font-extrabold text-yellow-900 mb-4 animate-fade-in-down">Our Rooms & Suites</h1>
-        <p class="text-lg md:text-xl text-gray-700 mb-8 animate-fade-in-up">
-          Experience comfort, elegance, and tranquility in every room. Whether you're seeking a romantic getaway, a family retreat, or a business stay, Tala Ridge offers the perfect space for you.
+  <!-- Hero Section with Video Background -->
+  <section class="relative h-screen w-full overflow-hidden">
+    <!-- Carousel Container -->
+    <div id="heroCarousel" class="absolute inset-0">
+      <!-- Slide 1 (Visible by default) -->
+      <div class="absolute inset-0 transition-opacity duration-1000" data-active="true" style="opacity: 1;">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1920&auto=format&fit=crop&q=80" 
+             alt="Room" 
+             class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-black/50"></div>
+      </div>
+  
+      <!-- Slide 2 -->
+      <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" data-active="false">
+        <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=1920&auto=format&fit=crop&q=80" 
+             alt="Luxury Room" 
+             class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-black/50"></div>
+      </div>
+  
+      <!-- Slide 3 -->
+      <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" data-active="false">
+        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&auto=format&fit=crop&q=80" 
+             alt="Suite View" 
+             class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-black/50"></div>
+      </div>
+  
+      <!-- Slide 4 -->
+      <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" data-active="false">
+        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1920&auto=format&fit=crop&q=80" 
+             alt="Bathroom" 
+             class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-black/50"></div>
+      </div>
+    </div>
+  
+    <!-- Text Content -->
+    <div class="relative h-full flex items-center justify-center text-center px-4 z-10">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 animate__animated animate__fadeInDown">
+          Luxury Accommodation
+        </h1>
+        <p class="text-xl md:text-2xl text-white/90 mb-8 animate__animated animate__fadeInUp animate__delay-1s">
+          Experience unparalleled comfort and elegance at Tala Ridge
+        </p>
+        <a href="#rooms" class="inline-block bg-yellow-900 text-white font-bold px-8 py-4 rounded-lg shadow-lg hover:bg-yellow-800 transition animate__animated animate__fadeInUp animate__delay-2s">
+          Explore Our Rooms
+        </a>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- Featured Rooms Section -->
+  <section id="rooms" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold text-yellow-900 mb-4 animate__animated animate__fadeInDown">
+          Featured Rooms
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto animate__animated animate__fadeInUp">
+          Discover our carefully curated selection of rooms and suites, each designed to provide the perfect blend of comfort and luxury.
         </p>
       </div>
-    </section>
 
-    <!-- Rooms Cards Section -->
-    <section class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Room 1 -->
-      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition group animate-slide-in-up">
-        <div class="relative">
-          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80" alt="Deluxe Room" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
-          <span class="absolute top-4 left-4 bg-yellow-900 text-white px-3 py-1 rounded-full text-xs font-bold shadow">Deluxe</span>
-        </div>
-        <div class="p-6">
-          <h3 class="text-2xl font-bold text-yellow-900 mb-2">Deluxe Room</h3>
-          <p class="text-gray-700 mb-4">
-            Spacious comfort with a king bed, private balcony, and stunning garden views. Perfect for couples or solo travelers.
-          </p>
-          <div class="flex items-center space-x-2 text-yellow-900 mb-2">
-            <i class="fa fa-bed"></i>
-            <span>1 King Bed</span>
-          </div>
-          <div class="flex items-center space-x-2 text-yellow-900 mb-4">
-            <i class="fa fa-wifi"></i>
-            <span>Free Wi-Fi</span>
-          </div>
-          <button class="w-full bg-yellow-900 text-white font-bold py-2 rounded-lg transition hover:bg-yellow-800 animate-pulse">Book Now</button>
-        </div>
-      </div>
-      <!-- Room 2 -->
-      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition group animate-slide-in-up delay-100">
-        <div class="relative">
-          <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?w=600&auto=format&fit=crop&q=80" alt="Family Suite" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
-          <span class="absolute top-4 left-4 bg-yellow-900 text-white px-3 py-1 rounded-full text-xs font-bold shadow">Family</span>
-        </div>
-        <div class="p-6">
-          <h3 class="text-2xl font-bold text-yellow-900 mb-2">Family Suite</h3>
-          <p class="text-gray-700 mb-4">
-            Enjoy extra space with two bedrooms, a lounge, and a private terrace. Ideal for families or groups.
-          </p>
-          <div class="flex items-center space-x-2 text-yellow-900 mb-2">
-            <i class="fa fa-users"></i>
-            <span>2 Bedrooms</span>
-          </div>
-          <div class="flex items-center space-x-2 text-yellow-900 mb-4">
-            <i class="fa fa-tv"></i>
-            <span>Smart TV</span>
-          </div>
-          <button class="w-full bg-yellow-900 text-white font-bold py-2 rounded-lg transition hover:bg-yellow-800 animate-pulse">Book Now</button>
+      <!-- Search Bar Section -->
+      <div class="max-w-4xl mx-auto mb-12">
+        <div class="bg-white rounded-xl shadow-lg p-6 animate__animated animate__fadeInUp">
+          <form id="roomSearchForm" class="flex flex-col md:flex-row gap-4 items-center">
+            <div class="flex-1 w-full">
+              <input type="text" 
+                     id="roomSearch" 
+                     placeholder="Search rooms by name, type, or amenities..." 
+                     class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-yellow-400 focus:outline-none bg-white/80 text-gray-800 text-sm transition"
+              >
+            </div>
+            <div class="flex gap-2">
+              <select id="roomTypeFilter" 
+                      class="px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-yellow-400 focus:outline-none bg-white/80 text-gray-800 text-sm transition">
+                <option value="">All Types</option>
+                <option value="Deluxe">Deluxe</option>
+                <option value="Family">Family</option>
+                <option value="Executive">Executive</option>
+              </select>
+              <button type="submit" 
+                      class="bg-yellow-900 text-white font-bold px-6 py-3 rounded-lg shadow hover:bg-yellow-800 transition uppercase tracking-widest text-sm">
+                Search
+              </button>
+            </div>
+          </form>
         </div>
       </div>
-      <!-- Room 3 -->
-      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition group animate-slide-in-up delay-200">
-        <div class="relative">
-          <img src="https://images.unsplash.com/photo-1509228468518-c5eeecbff44a?w=600&auto=format&fit=crop&q=80" alt="Executive Suite" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
-          <span class="absolute top-4 left-4 bg-yellow-900 text-white px-3 py-1 rounded-full text-xs font-bold shadow">Executive</span>
-        </div>
-        <div class="p-6">
-          <h3 class="text-2xl font-bold text-yellow-900 mb-2">Executive Suite</h3>
-          <p class="text-gray-700 mb-4">
-            Luxury and privacy with a spacious living area, work desk, and premium amenities for business or leisure.
-          </p>
-          <div class="flex items-center space-x-2 text-yellow-900 mb-2">
-            <i class="fa fa-briefcase"></i>
-            <span>Workspace</span>
-          </div>
-          <div class="flex items-center space-x-2 text-yellow-900 mb-4">
-            <i class="fa fa-bath"></i>
-            <span>Luxury Bath</span>
-          </div>
-          <button class="w-full bg-yellow-900 text-white font-bold py-2 rounded-lg transition hover:bg-yellow-800 animate-pulse">Book Now</button>
-        </div>
-      </div>
-    </section>
 
-        <section class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Room 1 -->
-      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition group animate-slide-in-up">
-        <div class="relative">
-          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80" alt="Deluxe Room" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
-          <span class="absolute top-4 left-4 bg-yellow-900 text-white px-3 py-1 rounded-full text-xs font-bold shadow">Deluxe</span>
-        </div>
-        <div class="p-6">
-          <h3 class="text-2xl font-bold text-yellow-900 mb-2">Deluxe Room</h3>
-          <p class="text-gray-700 mb-4">
-            Spacious comfort with a king bed, private balcony, and stunning garden views. Perfect for couples or solo travelers.
-          </p>
-          <div class="flex items-center space-x-2 text-yellow-900 mb-2">
-            <i class="fa fa-bed"></i>
-            <span>1 King Bed</span>
+      <!-- Room Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Room cards with enhanced animations -->
+        <div class="room-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition group animate__animated animate__fadeInUp">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80" 
+                 alt="Deluxe Room" 
+                 class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-4 left-4 bg-yellow-900 text-white px-4 py-2 rounded-full text-sm font-bold shadow">
+              Deluxe
+            </span>
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+              <h3 class="text-2xl font-bold text-white mb-2">Deluxe Room</h3>
+              <p class="text-white/90 text-sm">Starting from $200/night</p>
+            </div>
           </div>
-          <div class="flex items-center space-x-2 text-yellow-900 mb-4">
-            <i class="fa fa-wifi"></i>
-            <span>Free Wi-Fi</span>
+          <div class="p-6">
+            <div class="flex items-center space-x-4 mb-4">
+              <div class="flex items-center text-yellow-900">
+                <i class="fa fa-bed mr-2"></i>
+                <span>1 King Bed</span>
+              </div>
+              <div class="flex items-center text-yellow-900">
+                <i class="fa fa-users mr-2"></i>
+                <span>2 Guests</span>
+              </div>
+            </div>
+            <p class="text-gray-600 mb-6">
+              Spacious comfort with a king bed, private balcony, and stunning garden views. Perfect for couples or solo travelers.
+            </p>
+            <div class="flex justify-between items-center">
+              <button class="bg-yellow-900 text-white font-bold px-6 py-3 rounded-lg shadow hover:bg-yellow-800 transition">
+                Book Now
+              </button>
+              <a href="#" class="text-yellow-900 font-semibold hover:text-yellow-800 transition">
+                View Details
+              </a>
+            </div>
           </div>
-          <button class="w-full bg-yellow-900 text-white font-bold py-2 rounded-lg transition hover:bg-yellow-800 animate-pulse">Book Now</button>
         </div>
-      </div>
-      <!-- Room 2 -->
-      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition group animate-slide-in-up delay-100">
-        <div class="relative">
-          <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?w=600&auto=format&fit=crop&q=80" alt="Family Suite" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
-          <span class="absolute top-4 left-4 bg-yellow-900 text-white px-3 py-1 rounded-full text-xs font-bold shadow">Family</span>
-        </div>
-        <div class="p-6">
-          <h3 class="text-2xl font-bold text-yellow-900 mb-2">Family Suite</h3>
-          <p class="text-gray-700 mb-4">
-            Enjoy extra space with two bedrooms, a lounge, and a private terrace. Ideal for families or groups.
-          </p>
-          <div class="flex items-center space-x-2 text-yellow-900 mb-2">
-            <i class="fa fa-users"></i>
-            <span>2 Bedrooms</span>
-          </div>
-          <div class="flex items-center space-x-2 text-yellow-900 mb-4">
-            <i class="fa fa-tv"></i>
-            <span>Smart TV</span>
-          </div>
-          <button class="w-full bg-yellow-900 text-white font-bold py-2 rounded-lg transition hover:bg-yellow-800 animate-pulse">Book Now</button>
-        </div>
-      </div>
-      <!-- Room 3 -->
-      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition group animate-slide-in-up delay-200">
-        <div class="relative">
-          <img src="https://images.unsplash.com/photo-1509228468518-c5eeecbff44a?w=600&auto=format&fit=crop&q=80" alt="Executive Suite" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
-          <span class="absolute top-4 left-4 bg-yellow-900 text-white px-3 py-1 rounded-full text-xs font-bold shadow">Executive</span>
-        </div>
-        <div class="p-6">
-          <h3 class="text-2xl font-bold text-yellow-900 mb-2">Executive Suite</h3>
-          <p class="text-gray-700 mb-4">
-            Luxury and privacy with a spacious living area, work desk, and premium amenities for business or leisure.
-          </p>
-          <div class="flex items-center space-x-2 text-yellow-900 mb-2">
-            <i class="fa fa-briefcase"></i>
-            <span>Workspace</span>
-          </div>
-          <div class="flex items-center space-x-2 text-yellow-900 mb-4">
-            <i class="fa fa-bath"></i>
-            <span>Luxury Bath</span>
-          </div>
-          <button class="w-full bg-yellow-900 text-white font-bold py-2 rounded-lg transition hover:bg-yellow-800 animate-pulse">Book Now</button>
-        </div>
-      </div>
-    </section>
 
-    <!-- Amenities Section -->
-    <section class="max-w-7xl mx-auto px-4 py-12">
-      <h2 class="text-3xl md:text-4xl font-bold text-yellow-900 mb-8 text-center animate-fade-in-down">Amenities & Perks</h2>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 justify-items-center">
-        <div class="flex flex-col items-center animate-bounce delay-100">
-          <span class="bg-yellow-100 text-yellow-900 rounded-full p-4 mb-2 shadow-lg text-2xl"><i class="fa fa-wifi"></i></span>
-          <span class="text-sm font-semibold text-yellow-900">Free Wi-Fi</span>
+        <div class="room-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition group animate__animated animate__fadeInUp">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80" 
+                 alt="Deluxe Room" 
+                 class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-4 left-4 bg-yellow-900 text-white px-4 py-2 rounded-full text-sm font-bold shadow">
+              Deluxe
+            </span>
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+              <h3 class="text-2xl font-bold text-white mb-2">Deluxe Room</h3>
+              <p class="text-white/90 text-sm">Starting from $200/night</p>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center space-x-4 mb-4">
+              <div class="flex items-center text-yellow-900">
+                <i class="fa fa-bed mr-2"></i>
+                <span>1 King Bed</span>
+              </div>
+              <div class="flex items-center text-yellow-900">
+                <i class="fa fa-users mr-2"></i>
+                <span>2 Guests</span>
+              </div>
+            </div>
+            <p class="text-gray-600 mb-6">
+              Spacious comfort with a king bed, private balcony, and stunning garden views. Perfect for couples or solo travelers.
+            </p>
+            <div class="flex justify-between items-center">
+              <button class="bg-yellow-900 text-white font-bold px-6 py-3 rounded-lg shadow hover:bg-yellow-800 transition">
+                Book Now
+              </button>
+              <a href="#" class="text-yellow-900 font-semibold hover:text-yellow-800 transition">
+                View Details
+              </a>
+            </div>
+          </div>
         </div>
-        <div class="flex flex-col items-center animate-bounce delay-200">
-          <span class="bg-yellow-100 text-yellow-900 rounded-full p-4 mb-2 shadow-lg text-2xl"><i class="fa fa-swimmer"></i></span>
-          <span class="text-sm font-semibold text-yellow-900">Swimming Pool</span>
+
+        <!-- Repeat similar structure for other room cards -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Amenities Section with Icons -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold text-yellow-900 mb-4 animate__animated animate__fadeInDown">
+          Premium Amenities
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto animate__animated animate__fadeInUp">
+          Enjoy a range of luxurious amenities designed to enhance your stay at Tala Ridge.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center amenity-icon animate__animated animate__fadeInUp">
+          <div class="bg-yellow-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 animate__animated animate__pulse animate__infinite">
+            <i class="fa fa-wifi text-3xl text-yellow-900"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-yellow-900 mb-2">Free Wi-Fi</h3>
+          <p class="text-gray-600 text-sm">High-speed internet access</p>
         </div>
-        <div class="flex flex-col items-center animate-bounce delay-300">
-          <span class="bg-yellow-100 text-yellow-900 rounded-full p-4 mb-2 shadow-lg text-2xl"><i class="fa fa-utensils"></i></span>
-          <span class="text-sm font-semibold text-yellow-900">Restaurant</span>
+        <div class="text-center amenity-icon animate__animated animate__fadeInUp">
+          <div class="bg-yellow-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 animate__animated animate__pulse animate__infinite">
+            <i class="fa fa-swimmer text-3xl text-yellow-900"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-yellow-900 mb-2">Swimming Pool</h3>
+          <p class="text-gray-600 text-sm">Relax in our outdoor pool</p>
         </div>
-        <div class="flex flex-col items-center animate-bounce delay-400">
-          <span class="bg-yellow-100 text-yellow-900 rounded-full p-4 mb-2 shadow-lg text-2xl"><i class="fa fa-spa"></i></span>
-          <span class="text-sm font-semibold text-yellow-900">Spa & Wellness</span>
+        <div class="text-center amenity-icon animate__animated animate__fadeInUp">
+          <div class="bg-yellow-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 animate__animated animate__pulse animate__infinite">
+            <i class="fa fa-concierge-bell text-3xl text-yellow-900"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-yellow-900 mb-2">Room Service</h3>
+          <p class="text-gray-600 text-sm">24/7 in-room dining</p>
         </div>
-        <div class="flex flex-col items-center animate-bounce delay-500">
-          <span class="bg-yellow-100 text-yellow-900 rounded-full p-4 mb-2 shadow-lg text-2xl"><i class="fa fa-car"></i></span>
-          <span class="text-sm font-semibold text-yellow-900">Free Parking</span>
+        <div class="text-center amenity-icon animate__animated animate__fadeInUp">
+          <div class="bg-yellow-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 animate__animated animate__pulse animate__infinite">
+            <i class="fa fa-dumbbell text-3xl text-yellow-900"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-yellow-900 mb-2">Fitness Center</h3>
+          <p class="text-gray-600 text-sm">Modern gym facilities</p>
         </div>
-        <div class="flex flex-col items-center animate-bounce delay-600">
-          <span class="bg-yellow-100 text-yellow-900 rounded-full p-4 mb-2 shadow-lg text-2xl"><i class="fa fa-mug-hot"></i></span>
-          <span class="text-sm font-semibold text-yellow-900">Room Service</span>
+        <div class="text-center amenity-icon animate__animated animate__fadeInUp">
+          <div class="bg-yellow-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 animate__animated animate__pulse animate__infinite">
+            <i class="fa fa-coffee text-3xl text-yellow-900"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-yellow-900 mb-2">Complimentary Breakfast</h3>
+          <p class="text-gray-600 text-sm">Start your day with a delicious meal</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Animated Testimonials Section -->
-    <section class="max-w-5xl mx-auto px-4 py-12">
-      <h2 class="text-3xl md:text-4xl font-bold text-yellow-900 mb-8 text-center animate-fade-in-down">What Our Guests Say</h2>
+  <!-- Testimonials Section with Slider -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold text-yellow-900 mb-4 animate__animated animate__fadeInDown">
+          Guest Reviews
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto animate__animated animate__fadeInUp">
+          Hear what our guests have to say about their experience at Tala Ridge.
+        </p>
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl transition animate-slide-in-up">
-          <i class="fa fa-quote-left text-yellow-900 text-3xl mb-3 animate-pulse"></i>
-          <p class="text-gray-700 mb-4 italic">"Absolutely stunning rooms and the staff were so welcoming. We’ll be back!"</p>
-          <span class="font-bold text-yellow-900">— Alice N.</span>
-        </div>
-        <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl transition animate-slide-in-up delay-100">
-          <i class="fa fa-quote-left text-yellow-900 text-3xl mb-3 animate-pulse"></i>
-          <p class="text-gray-700 mb-4 italic">"The family suite was perfect for us. Kids loved the pool and gardens."</p>
-          <span class="font-bold text-yellow-900">— The Kimanis</span>
-        </div>
-        <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl transition animate-slide-in-up delay-200">
-          <i class="fa fa-quote-left text-yellow-900 text-3xl mb-3 animate-pulse"></i>
-          <p class="text-gray-700 mb-4 italic">"Best sleep I’ve had in ages. The executive suite is worth every penny."</p>
-          <span class="font-bold text-yellow-900">— Samuel K.</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Animated FAQ Section -->
-    <section class="max-w-3xl mx-auto px-4 py-12">
-      <h2 class="text-3xl md:text-4xl font-bold text-yellow-900 mb-8 text-center animate-fade-in-down">Frequently Asked Questions</h2>
-      <div class="space-y-6">
-        <div class="bg-white rounded-lg shadow p-5 animate-fade-in-up">
-          <h3 class="font-semibold text-yellow-900 mb-2">Is breakfast included?</h3>
-          <p class="text-gray-700 text-sm">Yes, all room bookings include a complimentary breakfast buffet.</p>
-        </div>
-        <div class="bg-white rounded-lg shadow p-5 animate-fade-in-up delay-100">
-          <h3 class="font-semibold text-yellow-900 mb-2">Can I request a late checkout?</h3>
-          <p class="text-gray-700 text-sm">Late checkout is available upon request, subject to availability.</p>
-        </div>
-        <div class="bg-white rounded-lg shadow p-5 animate-fade-in-up delay-200">
-          <h3 class="font-semibold text-yellow-900 mb-2">Are pets allowed?</h3>
-          <p class="text-gray-700 text-sm">We welcome small pets in select rooms. Please contact us before booking.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Booking Modal (hidden by default) -->
-    <div id="bookingModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 transition-opacity duration-300 opacity-0 pointer-events-none">
-      <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-12 w-full max-w-lg relative animate-fade-in-up">
-        <button id="closeModal" class="absolute top-4 right-4 text-gray-500 hover:text-yellow-900 text-2xl focus:outline-none">
-          <i class="fas fa-times"></i>
-        </button>
-        <h2 class="text-2xl sm:text-3xl font-bold text-yellow-900 mb-4 text-center">Book Your Stay</h2>
-        <p class="text-gray-700 mb-6 text-center max-w-xl">
-          Fill in your details and our team will get back to you as soon as possible.
-        </p>
-        <form id="bookingForm" method="post" class="w-full max-w-lg space-y-4">
-          {% csrf_token %}
-          <div class="flex flex-col sm:flex-row gap-4">
-            <input type="text" name="name" placeholder="Your Name" required
-              class="flex-1 px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-yellow-400 focus:outline-none bg-white/80 text-gray-800 text-sm transition" />
-            <input type="email" name="email" placeholder="Your Email" required
-              class="flex-1 px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-yellow-400 focus:outline-none bg-white/80 text-gray-800 text-sm transition" />
+        <!-- Testimonial cards with enhanced styling -->
+        <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition animate__animated animate__fadeInUp">
+          <div class="flex items-center mb-6">
+            <img src="https://randomuser.me/api/portraits/women/1.jpg" 
+                 alt="Guest" 
+                 class="w-16 h-16 rounded-full mr-4">
+            <div>
+              <h4 class="font-bold text-yellow-900">Sarah Johnson</h4>
+              <div class="flex text-yellow-400">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
           </div>
-          <input type="text" name="room_type" id="roomTypeInput" placeholder="Room Type" required
-            class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-yellow-400 focus:outline-none bg-white/80 text-gray-800 text-sm transition" />
-          <textarea name="message" rows="3" placeholder="Additional Requests (optional)"
-            class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-yellow-400 focus:outline-none bg-white/80 text-gray-800 text-sm transition"></textarea>
-          <button type="submit"
-            class="w-full bg-yellow-900 hover:bg-yellow-800 text-white font-bold py-3 rounded-lg transition text-sm uppercase tracking-widest shadow">
-            Send Booking Request
-          </button>
-          <div id="bookingSuccess" class="hidden text-yellow-600 font-bold mt-2 text-center">Thank you! We have received your booking.</div>
-          <div id="bookingError" class="hidden text-red-600 font-bold mt-2 text-center">Sorry, there was a problem. Please try again.</div>
+          <p class="text-gray-600 italic">
+            "Absolutely stunning rooms and exceptional service. The attention to detail is remarkable."
+          </p>
+        </div>
+        <!-- Add more testimonials -->
+        <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition animate__animated animate__fadeInUp">
+          <div class="flex items-center mb-6">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" 
+                 alt="Guest" 
+                 class="w-16 h-16 rounded-full mr-4">
+            <div>
+              <h4 class="font-bold text-yellow-900">James Miller</h4>
+              <div class="flex text-yellow-400">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+            </div>
+          </div>
+          <p class="text-gray-600 italic">
+            "The amenities were top-notch and the staff went above and beyond to make our stay memorable. Highly recommend!"
+          </p>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition animate__animated animate__fadeInUp">
+          <div class="flex items-center mb-6">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" 
+                 alt="Guest" 
+                 class="w-16 h-16 rounded-full mr-4">
+            <div>
+              <h4 class="font-bold text-yellow-900">Emily Carter</h4>
+              <div class="flex text-yellow-400">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+          <p class="text-gray-600 italic">
+            "A beautiful resort with breathtaking views. The breakfast was delicious and the pool was so relaxing!"
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Section -->
+  <section class="py-20 bg-yellow-900 text-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 animate__animated animate__fadeInDown">
+          Book Your Stay
+        </h2>
+        <p class="text-lg text-white/90 max-w-2xl mx-auto animate__animated animate__fadeInUp">
+          Experience luxury and comfort at Tala Ridge. Book your stay today and enjoy exclusive benefits.
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto">
+        <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm font-semibold mb-2">Check In</label>
+            <input type="date" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white">
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-2">Check Out</label>
+            <input type="date" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white">
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-2">Guests</label>
+            <select class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white">
+              <option>1 Guest</option>
+              <option>2 Guests</option>
+              <option>3 Guests</option>
+              <option>4 Guests</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-2">Room Type</label>
+            <select class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white">
+              <option>Deluxe Room</option>
+              <option>Family Suite</option>
+              <option>Executive Suite</option>
+            </select>
+          </div>
+          <div class="md:col-span-2">
+            <button type="submit" class="w-full bg-white text-yellow-900 font-bold px-8 py-4 rounded-lg shadow-lg hover:bg-yellow-100 transition">
+              Check Availability
+            </button>
+          </div>
         </form>
       </div>
     </div>
+  </section>
 
-    <!-- Call to Action -->
-    <section class="w-full py-12 bg-yellow-900 flex flex-col items-center justify-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 text-center">Ready to Relax?</h2>
-      <p class="text-white mb-6 text-center max-w-2xl">
-        Book your stay at Tala Ridge and enjoy the perfect blend of comfort, style, and nature. Contact us for special offers or group bookings!
-      </p>
-      <a href="{% url 'home' %}#contact-section" class="bg-white text-yellow-900 font-bold px-8 py-3 rounded-lg shadow hover:bg-yellow-100 transition text-lg uppercase tracking-widest">
-        Contact Us
-      </a>
-    </section>
-
-    <!-- Footer -->
-    <footer class="w-full bg-yellow-900 backdrop-blur-sm text-white py-8 mt-0">
-      <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div class="flex items-center space-x-3">
-          <span class="inline-flex items-center justify-center bg-white rounded-lg p-1" style="height: 44px;">
-            <img src="{% static 'Images/logo-4.png' %}" alt="Tala Ridge Logo" class="h-10 w-auto" style="object-fit:contain;">
-          </span>
-          <span class="font-bold text-lg tracking-widest">TALA RIDGE</span>
+  <!-- Footer -->
+  <footer class="bg-white">
+    <div class="mx-auto max-w-screen-xl px-4 pt-16 pb-6 sm:px-6 lg:px-8">
+      <div class="lg:flex lg:items-center lg:justify-between">
+        <div class="flex justify-center text-teal-600 sm:justify-start">
+          
+  
+        <p class="mt-4 max-w-md text-center leading-relaxed text-gray-500 sm:text-left lg:mt-0">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt consequuntur amet culpa
+          cum itaque neque.
+        </p>
+      </div>
+  
+      <div
+        class="mt-16 grid grid-cols-1 gap-8 border-t border-gray-100 pt-16 md:grid-cols-4 lg:grid-cols-6"
+      >
+        <div class="text-center sm:text-left">
+          <p class="text-lg font-medium text-gray-900">About Us</p>
+  
+          <ul class="mt-8 space-y-4 text-sm">
+            <li>
+              <a class="text-gray-700 transition hover:text-gray-700/75" href="#">
+                Company History
+              </a>
+            </li>
+  
+            <li>
+              <a class="text-gray-700 transition hover:text-gray-700/75" href="#"> Meet the Team </a>
+            </li>
+  
+            <li>
+              <a class="text-gray-700 transition hover:text-gray-700/75" href="#">
+                Employee Handbook
+              </a>
+            </li>
+  
+            <li>
+              <a class="text-gray-700 transition hover:text-gray-700/75" href="#"> Careers </a>
+            </li>
+          </ul>
         </div>
-        <div class="text-center md:text-right text-sm">
-          &copy; {{ year|default:"2025" }} Tala Ridge Country Resort. All rights reserved.
+  
+        <div class="text-center sm:text-left">
+          <p class="text-lg font-medium text-gray-900">Our Services</p>
+  
+          <ul class="mt-8 space-y-4 text-sm">
+            <li>
+              <a class="text-gray-700 transition hover:text-gray-700/75" href="#">
+                Web Development
+              </a>
+            </li>
+  
+            <li>
+              <a class="text-gray-700 transition hover:text-gray-700/75" href="#"> Web Design </a>
+            </li>
+  
+            <li>
+              <a class="text-gray-700 transition hover:text-gray-700/75" href="#"> Marketing </a>
+            </li>
+  
+            <li>
+              <a class="text-gray-700 transition hover:text-gray-700/75" href="#"> Google Ads </a>
+            </li>
+          </ul>
         </div>
-        <div class="flex space-x-4">
-          <a href="https://facebook.com" target="_blank" class="hover:text-yellow-400"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://instagram.com" target="_blank" class="hover:text-yellow-400"><i class="fab fa-instagram"></i></a>
-          <a href="https://twitter.com" target="_blank" class="hover:text-yellow-400"><i class="fab fa-twitter"></i></a>
+  
+        <div class="text-center sm:text-left">
+          <p class="text-lg font-medium text-gray-900">Resources</p>
+  
+          <ul class="mt-8 space-y-4 text-sm">
+            <li>
+              <a class="text-gray-700 transition hover:text-gray-700/75" href="#"> Online Guides </a>
+            </li>
+  
+            <li>
+              <a class="text-gray-700 transition hover:text-gray-700/75" href="#">
+                Conference Notes
+              </a>
+            </li>
+  
+            <li>
+              <a class="text-gray-700 transition hover:text-gray-700/75" href="#"> Forum </a>
+            </li>
+  
+            <li>
+              <a class="text-gray-700 transition hover:text-gray-700/75" href="#"> Downloads </a>
+            </li>
+  
+            <li>
+              <a class="text-gray-700 transition hover:text-gray-700/75" href="#">
+                Upcoming Events
+              </a>
+            </li>
+          </ul>
+        </div>
+  
+        <div class="text-center sm:text-left">
+          <p class="text-lg font-medium text-gray-900">Helpful Links</p>
+  
+          <ul class="mt-8 space-y-4 text-sm">
+            <li>
+              <a class="text-gray-700 transition hover:text-gray-700/75" href="#"> FAQs </a>
+            </li>
+  
+            <li>
+              <a class="text-gray-700 transition hover:text-gray-700/75" href="#"> Support </a>
+            </li>
+  
+            <li>
+              <a
+                class="group flex justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
+                href="#"
+              >
+                <span class="text-gray-700 transition group-hover:text-gray-700/75"> Live Chat </span>
+  
+                <span class="relative flex size-2">
+                  <span
+                    class="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-400 opacity-75"
+                  ></span>
+                  <span class="relative inline-flex size-2 rounded-full bg-teal-500"></span>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+  
+        <div class="text-center sm:text-left md:col-span-4 lg:col-span-2">
+          <p class="text-lg font-medium text-gray-900">Stay in Touch</p>
+  
+          <div class="mx-auto mt-8 max-w-md sm:ms-0">
+            <p class="text-center leading-relaxed text-gray-500 ltr:sm:text-left rtl:sm:text-right">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum id, iure consectetur et
+              error hic!
+            </p>
+  
+            <form class="mt-4">
+              <div class="flex flex-col gap-4 sm:flex-row lg:flex-col lg:items-start">
+                <label for="email" class="sr-only">Email</label>
+  
+                <input
+                  class="w-full rounded-full border-gray-200 px-6 py-3 shadow-xs"
+                  type="email"
+                  placeholder="Enter your email"
+                />
+  
+                <button
+                  class="block rounded-full bg-indigo-500 px-8 py-3 font-medium text-white transition hover:bg-indigo-600"
+                  type="submit"
+                >
+                  Subscribe
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-    </footer>
-  </div>
-
-  <!-- Animations -->
-  <style>
-    @keyframes fade-in-down {
-      0% { opacity: 0; transform: translateY(-30px);}
-      100% { opacity: 1; transform: translateY(0);}
-    }
-    .animate-fade-in-down {
-      animation: fade-in-down 1s cubic-bezier(0.4, 0, 0.2, 1) both;
-    }
-    @keyframes fade-in-up {
-      0% { opacity: 0; transform: translateY(30px);}
-      100% { opacity: 1; transform: translateY(0);}
-    }
-    .animate-fade-in-up {
-      animation: fade-in-up 1s 0.2s cubic-bezier(0.4, 0, 0.2, 1) both;
-    }
-    @keyframes slide-in-up {
-      0% { opacity: 0; transform: translateY(60px);}
-      100% { opacity: 1; transform: translateY(0);}
-    }
-    .animate-slide-in-up {
-      animation: slide-in-up 1s cubic-bezier(0.4, 0, 0.2, 1) both;
-    }
-    .animate-slide-in-up.delay-100 { animation-delay: 0.15s; }
-    .animate-slide-in-up.delay-200 { animation-delay: 0.3s; }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0);}
-      50% { transform: translateY(-10px);}
-    }
-    .animate-bounce { animation: bounce 1.2s infinite; }
-    .delay-100 { animation-delay: 0.1s !important; }
-    .delay-200 { animation-delay: 0.2s !important; }
-    .delay-300 { animation-delay: 0.3s !important; }
-    .delay-400 { animation-delay: 0.4s !important; }
-    .delay-500 { animation-delay: 0.5s !important; }
-    .delay-600 { animation-delay: 0.6s !important; }
-  </style>
+  
+      <div class="mt-16 border-t border-gray-100 pt-6 sm:flex sm:items-center sm:justify-between">
+        <p class="text-center text-sm text-gray-500 sm:text-left">
+          Copyright &copy; 2022. All rights reserved.
+        </p>
+  
+        <ul class="mt-4 flex justify-center gap-6 sm:mt-0 sm:justify-start">
+          <li>
+            <a
+              href="#"
+              rel="noreferrer"
+              target="_blank"
+              class="text-teal-700 transition hover:text-teal-700/75"
+            >
+              <span class="sr-only">Facebook</span>
+              <svg class="size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill-rule="evenodd"
+                  d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+  
+          <li>
+            <a
+              href="#"
+              rel="noreferrer"
+              target="_blank"
+              class="text-teal-700 transition hover:text-teal-700/75"
+            >
+              <span class="sr-only">Instagram</span>
+              <svg class="size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill-rule="evenodd"
+                  d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+  
+          <li>
+            <a
+              href="#"
+              rel="noreferrer"
+              target="_blank"
+              class="text-teal-700 transition hover:text-teal-700/75"
+            >
+              <span class="sr-only">Twitter</span>
+              <svg class="size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"
+                />
+              </svg>
+            </a>
+          </li>
+  
+          <li>
+            <a
+              href="#"
+              rel="noreferrer"
+              target="_blank"
+              class="text-teal-700 transition hover:text-teal-700/75"
+            >
+              <span class="sr-only">GitHub</span>
+              <svg class="size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+  
+          <li>
+            <a
+              href="#"
+              rel="noreferrer"
+              target="_blank"
+              class="text-teal-700 transition hover:text-teal-700/75"
+            >
+              <span class="sr-only">Dribbble</span>
+              <svg class="size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
 
   <!-- Sidebar JS (place before </body>) -->
   <script>
@@ -528,6 +838,114 @@
         document.getElementById('bookingSuccess').classList.add('hidden');
       }
     });
+
+    // Add this to your existing script section
+    document.getElementById('roomSearchForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const searchTerm = document.getElementById('roomSearch').value.toLowerCase();
+      const roomType = document.getElementById('roomTypeFilter').value.toLowerCase();
+      const roomCards = document.querySelectorAll('.group'); // This targets all room cards
+
+      roomCards.forEach(card => {
+        const roomTitle = card.querySelector('h3').textContent.toLowerCase();
+        const roomDescription = card.querySelector('p').textContent.toLowerCase();
+        const roomTypeSpan = card.querySelector('span').textContent.toLowerCase();
+        
+        const matchesSearch = roomTitle.includes(searchTerm) || 
+                            roomDescription.includes(searchTerm);
+        const matchesType = !roomType || roomTypeSpan.includes(roomType);
+
+        if (matchesSearch && matchesType) {
+          card.style.display = 'block';
+          card.classList.add('animate__animated', 'animate__fadeIn');
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+
+    // Add real-time search functionality
+    document.getElementById('roomSearch').addEventListener('input', function(e) {
+      const searchTerm = e.target.value.toLowerCase();
+      const roomType = document.getElementById('roomTypeFilter').value.toLowerCase();
+      const roomCards = document.querySelectorAll('.group');
+
+      roomCards.forEach(card => {
+        const roomTitle = card.querySelector('h3').textContent.toLowerCase();
+        const roomDescription = card.querySelector('p').textContent.toLowerCase();
+        const roomTypeSpan = card.querySelector('span').textContent.toLowerCase();
+        
+        const matchesSearch = roomTitle.includes(searchTerm) || 
+                            roomDescription.includes(searchTerm);
+        const matchesType = !roomType || roomTypeSpan.includes(roomType);
+
+        if (matchesSearch && matchesType) {
+          card.style.display = 'block';
+          card.classList.add('animate__animated', 'animate__fadeIn');
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+
+    // Add filter change handler
+    document.getElementById('roomTypeFilter').addEventListener('change', function(e) {
+      const searchTerm = document.getElementById('roomSearch').value.toLowerCase();
+      const roomType = e.target.value.toLowerCase();
+      const roomCards = document.querySelectorAll('.group');
+
+      roomCards.forEach(card => {
+        const roomTitle = card.querySelector('h3').textContent.toLowerCase();
+        const roomDescription = card.querySelector('p').textContent.toLowerCase();
+        const roomTypeSpan = card.querySelector('span').textContent.toLowerCase();
+        
+        const matchesSearch = roomTitle.includes(searchTerm) || 
+                            roomDescription.includes(searchTerm);
+        const matchesType = !roomType || roomTypeSpan.includes(roomType);
+
+        if (matchesSearch && matchesType) {
+          card.style.display = 'block';
+          card.classList.add('animate__animated', 'animate__fadeIn');
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+
+    // Carousel sliding logic for hero section
+    document.addEventListener('DOMContentLoaded', function() {
+      const carousel = document.getElementById('heroCarousel');
+      const slides = carousel.querySelectorAll('[data-active]');
+      let currentSlide = 0;
+      let interval;
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          if (i === index) {
+            slide.style.opacity = '1';
+            slide.setAttribute('data-active', 'true');
+          } else {
+            slide.style.opacity = '0';
+            slide.setAttribute('data-active', 'false');
+          }
+        });
+        currentSlide = index;
+      }
+
+      function nextSlide() {
+        showSlide((currentSlide + 1) % slides.length);
+      }
+
+      // Initialize carousel
+      showSlide(0);
+      interval = setInterval(nextSlide, 5000);
+
+      // Pause on hover
+      carousel.addEventListener('mouseenter', () => clearInterval(interval));
+      carousel.addEventListener('mouseleave', () => {
+        interval = setInterval(nextSlide, 5000);
+      });
+    });
   </script>
 
   <!-- Custom Cursor -->
@@ -565,5 +983,31 @@
     // Keep the default system cursor visible
     document.body.style.cursor = 'auto';
   </script>
+
+
+  <script>
+    const slides = document.querySelectorAll('#heroCarousel > div');
+    let currentIndex = 0;
+  
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        const isActive = i === index;
+        slide.setAttribute('data-active', isActive);
+        slide.style.opacity = isActive ? '1' : '0';
+      });
+    }
+  
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    }
+  
+    // Initial call
+    showSlide(currentIndex);
+  
+    // Auto-slide every 5 seconds
+    setInterval(nextSlide, 5000);
+  </script>
+  
 </body>
 </html>
